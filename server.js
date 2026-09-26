@@ -192,7 +192,7 @@ app.post('/api/user/order-gmail', (req, res) => {
     let orderStatus = stats.activeProxyLink ? "Completed" : "Pending";
     
     if (mode === 'single') {
-        let cost = 15;
+        let cost = 10;
         if (user.balance < cost) return res.json({ success: false, message: "Wallet balance kam hai! Single order ke liye ₹15 chahiye." });
         
         user.balance -= cost;
@@ -210,7 +210,7 @@ app.post('/api/user/order-gmail', (req, res) => {
         let listCount = bulkUsernamesList ? bulkUsernamesList.length : 0;
         if (listCount === 0) return res.json({ success: false, message: "Galti: Bulk textbox list khali hai!" });
         
-        let totalCost = listCount * 12;
+        let totalCost = listCount * 10;
         if (user.balance < totalCost) return res.json({ success: false, message: `Wallet balance kam hai! ${listCount} emails ke liye ₹${totalCost} chahiye.` });
         
         user.balance -= totalCost;
