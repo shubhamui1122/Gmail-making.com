@@ -1,0 +1,12 @@
+{
+  "name": "gmail-maker-smm",
+  "version": "3.0.0",
+  "description": "Premium 3-Panel SMM Matrix",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
