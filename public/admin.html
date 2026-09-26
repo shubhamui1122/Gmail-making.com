@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sub-Admin Control Panel - Gmail Maker SMM</title>
+    <style>
+        * { box-sizing: border-box; margin:0; padding:0; font-family: 'Courier New', Courier, monospace; }
+        body { background: #03050a; color: #f0f6fc; min-height: 100vh; padding-bottom: 90px; }
+        
+        /* 🔒 SUB-ADMIN WORKERS GATE ACCESS BARRIER */
+        .gate-box { max-width: 360px; margin: 120px auto; background: #090d16; border: 2px solid #ef4444; border-radius: 12px; padding: 35px; text-align: center; box-shadow: 0 0 35px rgba(239,68,68,0.4); }
+        .inp-text { width:100%; background:#010409; border:1px solid #30363d; padding:12px; color:#10b981; font-weight:bold; border-radius:6px; margin-bottom:12px; outline:none; }
+        .inp-text:focus { border-color: #ef4444; }
+        .btn-action { width:100%; background:#da3637; color:white; font-weight:bold; border:none; padding:12px; border-radius:6px; cursor:pointer; box-shadow: 0 4px 10px rgba(218,54,55,0.3); }
+        
+        /* 📱 WORKERS PANEL APP RUNTIME INTERFACE WINDOWS */
+        #adminLayout { display: none; }
+        .tab-content { display: none; padding: 20px; max-width: 700px; margin: 0 auto; }
+        .tab-content.active { display: block; }
+        .panel-card { background: #090d16; border: 2px solid #ef4444; border-radius: 12px; padding: 20px; box-shadow: 0 0 15px rgba(239,68,68,0.15); margin-bottom: 20px; }
+        h4 { color: #f3f4f6; font-size: 13px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; border-bottom: 1px solid #1f2937; padding-bottom: 6px; }
+        
+        /* 🏠 WORKERS HOME TAB: 2 METRIC DISPLAY CARDS GRID (🚨 UTR STRIPPED CLEAN) */
+        .home-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .home-mini-box { background: #111827; border: 1px solid #30363d; border-radius: 10px; padding: 15px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .home-mini-box:hover { border-color: #ef4444; box-shadow: 0 0 10px rgba(239,68,68,0.2); }
+        .stat-glow-num { font-size: 24px; font-weight: 900; color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.4); margin-top: 5px; }
+
+        /* 📱 3 BUTTONS WORKERS BOTTOM STICKY NAV MENU SYSTEM */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #090d16; border-top: 1px solid #1f2937; display: flex; justify-content: space-around; padding: 12px 0; z-index: 999; box-shadow: 0 -5px 20px rgba(0,0,0,0.6); }
+        .nav-item { color: #94a3b8; border: none; background: none; font-size: 10px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
+        .nav-item.active { color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.3); }
+        
+        /* Duty Timer Clock Design */
+        .duty-clock-banner { background: #1e1b4b; border: 1px solid #6366f1; color: #38bdf8; padding: 8px; border-radius: 6px; font-size: 11px; font-weight: bold; text-align: center; margin-bottom: 15px; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+    <!-- 🔒 SUB-ADMIN SYSTEM SECURITY IDENTITY SHIELD GATE -->
+    <div id="securityGate" class="gate-box">
+        <h3 style="color:#ef4444; margin-bottom:5px; font-weight:900;">👥 Worker Gate</h3>
+        <p style="font-size:11px; color:#8b949e; margin-bottom:20px;">Sub-Admin Dashboard Terminal Node</p>
+        <input type="text" id="admId" placeholder="Enter Sub-Admin ID" class="inp-text">
+        <input type="password" id="admToken" placeholder="Enter Access Password" class="inp-text">
+        <button class="btn-action" onclick="gateValidationRoutine()">Unlock Duty Desk</button>
+    </div>
+    <!-- 📱 SUB-ADMIN ACTIVE RUNTIME PANEL APPLICATION TERMINAL -->
+    <div id="adminLayout">
+        
+        <!-- 🏠 TAB 1: WORKERS DASHBOARD (🚨 UTR DESK COMPLETELY REMOVED) -->
+        <div id="admHomeTab" class="tab-content active">
+            
+            <!-- 🔒 LIVE WORKER DUTY TIMER CLOCK COUNTER -->
+            <div id="dutyClockBox" class="duty-clock-banner">
+                📶 ACTIVE DUTY SESSION STATE: 00:00:00 | PROCESS NODES: IDLE
+            </div>
+
+            <div class="home-grid-2">
+                <div class="home-mini-box" style="cursor:default;">
+                    <p style="font-size:10px; color:#8b949e; text-transform:uppercase;">👥 Total Users</p>
+                    <h3 id="dashTotalUsers" class="stat-glow-num">0</h3>
+                </div>
+                <div class="home-mini-box" onclick="switchTab('admSupportTab', document.getElementById('btnNavSupport'))">
+                    <p style="font-size:10px; color:#8b949e; text-transform:uppercase;">⚠️ Active Problems</p>
+                    <h3 id="dashActiveTickets" class="stat-glow-num" style="color:#facc15;">0</h3>
+                </div>
+            </div>
+
+            <!-- 📦 5वाँ डिब्बा: Master Gmail Bulk/Single Orders Processing Table Grid -->
+            <div class="panel-card" style="border-color: #38bdf8;">
+                <p style="font-size:11px; color:#8b949e; text-transform:uppercase;">📦 My Total Gmail Order</p>
+                <h2 id="dashTotalGmailOrders" style="color:#38bdf8; font-size:22px; font-weight:900; margin-top:5px; text-shadow:0 0 10px rgba(56,189,248,0.4);">0 Gmails Ordered</h2>
+                <div id="adminGmailOrdersList" style="margin-top:12px; font-size:11px; color:#94a3b8; max-height:220px; overflow-y:auto; font-family:monospace; line-height:1.6;">
+                    Syncing active delivery orders vault queues...
+                </div>
+            </div>
+        </div>
+
+        <!-- ⚠️ TAB 2: USERS PROBLEM (TWO-WAY LIVE SUPPORT HUB CHAT CONTROL) -->
+        <div id="admSupportTab" class="tab-content">
+            <div class="panel-card">
+                <h4>💬 Gmail Creator Help Desk - Active User Queries Queue</h4>
+                <div id="adminTicketsGrid" style="display:flex; flex-direction:column; gap:15px; margin-top:10px;">
+                    <!-- Active unresolved client queries loop dropping here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 📱 3 BUTTON FIXED BOTTOM NAVIGATION STICKY MENU BAR -->
+        <div class="bottom-nav">
+            <button class="nav-item active" onclick="switchTab('admHomeTab', this)"><span>🏠</span>Home Dashboard</button>
+            <button id="btnNavSupport" class="nav-item" onclick="switchTab('admSupportTab', this)"><span>⚠️</span>Users Problem</button>
+            <button class="nav-item" style="color:#94a3b8;" onclick="logOutWorkerAccount()"><span>🚪</span>Log Out</button>
+        </div>
+    </div>
+    <script>
+        let dutySeconds = 0; let dutyInterval;
+        let workerSession = localStorage.getItem('subAdminSessionActive');
+        if(workerSession) { showWorkerCoreGrid(); }
+
+        async function gateValidationRoutine() {
+            const username = document.getElementById('admId').value; const password = document.getElementById('admToken').value;
+            const res = await fetch('/api/admin/login', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username, password }) });
+            const d = await res.json(); 
+            if(d.success) { 
+                localStorage.setItem('subAdminSessionActive', username); 
+                workerSession = username;
+                showWorkerCoreGrid(); 
+            } else { 
+                alert("Invalid Worker Credentials!"); 
+            }
+        }
+
+        function showWorkerCoreGrid() { 
+            document.getElementById('securityGate').style.display = 'none'; 
+            document.getElementById('adminLayout').style.display = 'block'; 
+            startWorkerDutyClock();
+            syncWorkerCounters(); setInterval(syncWorkerCounters, 5000); 
+        }
+        
+        function switchTab(tId, b) { document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(btn=>btn.classList.remove('active')); document.getElementById(tId).classList.add('active'); if(b) b.classList.add('active'); }
+        function logOutWorkerAccount() { localStorage.removeItem('subAdminSessionActive'); clearInterval(dutyInterval); window.location.reload(); }
+        
+        function startWorkerDutyClock() {
+            clearInterval(dutyInterval);
+            dutyInterval = setInterval(() => {
+                dutySeconds++;
+                let hrs = Math.floor(dutySeconds / 3600); let mins = Math.floor((dutySeconds % 3600) / 60); let secs = dutySeconds % 60;
+                hrs = hrs < 10 ? "0" + hrs : hrs; mins = mins < 10 ? "0" + mins : mins; secs = secs < 10 ? "0" + secs : secs;
+                document.getElementById('dutyClockBox').innerText = `📶 ACTIVE DUTY SESSION STATE: ${hrs}:${mins}:${secs} | WORKER ID: ${workerSession}`;
+            }, 1000);
+        }
+
+        async function dispatchReply(tId, inputId) { 
+            let msg = document.getElementById(inputId).value; 
+            await fetch('/api/admin/reply-ticket', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ ticketId: tId, replyMsg: msg }) }); 
+            alert("Reply dispatched to client!"); syncWorkerCounters(); 
+        }
+        
+        async function resolveTicketSuccess(tId) { 
+            await fetch('/api/admin/resolve-ticket', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ ticketId: tId }) }); 
+            alert("Success Logged! Chat closed."); syncWorkerCounters(); 
+        }
+
+        async function syncWorkerCounters() {
+            if(!localStorage.getItem('subAdminSessionActive')) return;
+            const res = await fetch('/api/admin/stats'); const s = await res.json();
+            document.getElementById('dashTotalUsers').innerText = s.usersCount; 
+            document.getElementById('dashTotalGmailOrders').innerText = s.totalGmailOrdersCount + " Gmails Ordered";
+
+            const oRes = await fetch('/api/admin/gmail-orders'); const oData = await oRes.json();
+            let oBox = document.getElementById('adminGmailOrdersList');
+            if(oData.length === 0) { 
+                oBox.innerHTML = "Syncing delivery orders vault... List khali hai."; 
+            } else { 
+                oBox.innerHTML = oData.map(o => `
+                    <div style="border-bottom:1px solid #1f2937; padding:6px 0;">
+                        <b>[ID: ${o.id}]</b> User: ${o.username} | Mode: <span style="color:#ef4444;">${o.mode}</span><br>
+                        Status: <b style="color:#facc15;">${o.status} (${o.progress}%)</b><br>
+                        Details: <span style="color:#fff;">${o.details}</span>
+                    </div>
+                `).join(''); 
+            }
+
+            const tRes = await fetch('/api/tickets/all'); const tData = await tRes.json();
+            let activeTkts = tData.filter(t => t.status === "Process Query"); 
+            document.getElementById('dashActiveTickets').innerText = activeTkts.length;
+            let grid = document.getElementById('adminTicketsGrid');
+            if(activeTkts.length === 0) { grid.innerHTML = "<p style='font-size:11px; color:#8b949e; font-style:italic;'>No user queries active in queue.</p>"; return; }
+            
+            let htmlStr = "";
+            for(let i=0; i<activeTkts.length; i++) {
+                let t = activeTkts[i];
+                htmlStr += "<div style='background:#161b22; border:1px solid #ef4444; padding:15px; border-radius:8px; font-size:12px; color:#c9d1d9; margin-bottom:10px;'>";
+                htmlStr += "<div style='display:flex; justify-content:space-between; margin-bottom:6px;'><b>📱 Mobile: " + t.username + "</b><b style='color:#facc15;'>[" + t.category + "]</b></div>";
+                htmlStr += "<p style='color:#8b949e; margin-bottom:10px;'>Problem: \"" + t.description + "\"</p>";
+                htmlStr += "<div style='display:flex; gap:10px; align-items:center;'>";
+                htmlStr += "<input type='text' id='repInp_" + i + "' placeholder='Type reply...' value='" + (t.reply.includes('Awaiting review') ? '' : t.reply) + "' style='flex:1; background:#010409; border:1px solid #30363d; padding:8px; color:#10b981; border-radius:4px; outline:none;'>";
+                htmlStr += "<button onclick=\"dispatchReply('" + t.id + "', 'repInp_" + i + "')\" style='background:#3b82f6; border:none; padding:8px 12px; color:white; font-weight:bold; border-radius:4px; cursor:pointer;'>Reply</button>";
+                htmlStr += "<button onclick=\"resolveTicketSuccess('" + t.id + "')\" style='background:#238636; border:none; padding:8px 12px; color:white; font-weight:bold; border-radius:4px; cursor:pointer;'>Success ✅</button>";
+                htmlStr += "</div></div>";
+            }
+            grid.innerHTML = htmlStr;
+        }
+    </script>
+</body>
+</html>
