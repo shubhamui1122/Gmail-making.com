@@ -1,277 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Owner Core Station - Gmail Maker SMM</title>
+    <title>Master Owner Command Terminal</title>
     <style>
-        * { box-sizing: border-box; margin:0; padding:0; font-family: 'Courier New', Courier, monospace; }
-        body { background: #020306; color: #f0f6fc; min-height: 100vh; padding-bottom: 90px; }
-        
-        /* 🔒 CYBER GATE SECURITY MATRIX ACCESS GRID */
-        .gate-box { max-width: 360px; margin: 120px auto; background: #090d16; border: 2px solid #ef4444; border-radius: 12px; padding: 35px; text-align: center; box-shadow: 0 0 35px rgba(239,68,68,0.4); }
-        .inp-text { width:100%; background:#010409; border:1px solid #30363d; padding:12px; color:#10b981; font-weight:bold; border-radius:6px; margin-bottom:12px; outline:none; }
-        .inp-text:focus { border-color: #ef4444; }
-        .btn-action { width:100%; background:#da3637; color:white; font-weight:bold; border:none; padding:12px; border-radius:6px; cursor:pointer; box-shadow: 0 4px 10px rgba(218,54,55,0.3); }
-        
-        /* 📱 OWNER RUNTIME INTERFACE MASTER WINDOWS */
-        #ownerLayout { display: none; }
-        .tab-content { display: none; padding: 20px; max-width: 750px; margin: 0 auto; }
-        .tab-content.active { display: block; }
-        .panel-card { background: #090d16; border: 2px solid #ef4444; border-radius: 12px; padding: 20px; box-shadow: 0 0 15px rgba(239,68,68,0.15); margin-bottom: 20px; }
-        h4 { color: #f3f4f6; font-size: 13px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; border-bottom: 1px solid #1f2937; padding-bottom: 6px; }
-        
-        /* 📊 MASTER METERS GRID LAYOUT PANELS */
-        .owner-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
-        .owner-mini-box { background: #111827; border: 1px solid #30363d; border-radius: 10px; padding: 12px; text-align: center; }
-        .stat-glow-num { font-size: 20px; font-weight: 900; color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.4); margin-top: 5px; }
-
-        /* 📱 5 BUTTONS MASTER NAV BAR FIX SYSTEM */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #090d16; border-top: 1px solid #1f2937; display: flex; justify-content: space-around; padding: 12px 0; z-index: 999; box-shadow: 0 -5px 20px rgba(0,0,0,0.6); }
-        .nav-item { color: #94a3b8; border: none; background: none; font-size: 10px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
-        .nav-item.active { color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.3); }
-        
-        /* Emergency Blackout Kill Switch Style */
-        .panic-header-strip { display: flex; justify-content: space-between; align-items: center; background: #111827; border-bottom: 1px solid #1f2937; padding: 12px 20px; margin-bottom: 15px; }
-        .btn-panic { background: linear-gradient(135deg, #da3637, #991b1b); color: white; font-size: 11px; font-weight: 900; border: 1px solid #ef4444; padding: 6px 14px; border-radius: 4px; cursor: pointer; animation: pulseGlow 1.5s infinite; }
-        @keyframes pulseGlow { 0% { box-shadow: 0 0 5px #ef4444; } 50% { box-shadow: 0 0 15px #ef4444; } 100% { box-shadow: 0 0 5px #ef4444; } }
+        /* 🌌 ULTRA-PREMIUM CYBERPUNK OWNER PANEL STYLES */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #07040d; color: #e2d9f3; padding: 15px; }
+        .owner-container { max-width: 800px; margin: 0 auto; }
+        .header-bar { 
+            background: linear-gradient(135deg, #1f0b3d, #0b0712); 
+            padding: 20px; border-radius: 12px; text-align: center; 
+            border: 2px solid #ff007f; box-shadow: 0 0 20px rgba(255, 0, 127, 0.4); margin-bottom: 25px; 
+        }
+        .header-bar h1 { color: #ff007f; font-size: 24px; text-shadow: 0 0 12px rgba(255,0,127,0.6); }
+        .card { background-color: #120924; border: 1px solid #8a2be2; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(138, 43, 226, 0.2); }
+        .mega-grid { display: flex; gap: 15px; margin-top: 15px; }
+        .mega-box { flex: 1; background: linear-gradient(180deg, #190e34, #0b0712); padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #4a347a; }
+        .mega-val { font-size: 28px; font-weight: bold; color: #00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.5); }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; font-size: 13px; color: #a295c2; font-weight: bold; }
+        .input-group input, .input-group textarea { width: 100%; padding: 12px; background-color: #07040d; border: 1px solid #4a347a; border-radius: 6px; color: #fff; font-size: 15px; outline: none; transition: 0.3s; }
+        .input-group input:focus, .input-group textarea:focus { border-color: #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.3); }
+        .neon-btn { width: 100%; padding: 14px; background: linear-gradient(90deg, #ff007f, #8a2be2); border: none; border-radius: 6px; color: #fff; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 0 12px rgba(255,0,127,0.4); }
+        .list-item { background-color: #07040d; padding: 15px; border-radius: 6px; border-left: 4px solid #00ffcc; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-success { background-color: #00ffcc; color: #07040d; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .audit-log { background-color: #07040d; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px; color: #ff007f; max-height: 200px; overflow-y: auto; border: 1px solid #23133d; margin-top: 10px; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
-
-    <!-- 🔒 HARDENED PRIVILEGED IDENTITY SHIELD GATE -->
-    <div id="securityGate" class="gate-box">
-        <h3 style="color:#ef4444; margin-bottom:5px; font-weight:900;">👑 Owner Station</h3>
-        <p style="font-size:11px; color:#8b949e; margin-bottom:20px;">Master Control Terminal Node Login</p>
-        <input type="text" id="admId" placeholder="Master Administrator ID" class="inp-text">
-        <input type="password" id="admToken" placeholder="Security Token Passcode" class="inp-text">
-        <button class="btn-action" onclick="gateValidationRoutine()">Unlock Station</button>
-    </div>
-
-    <!-- 👑 APPLICATION WORKSPACE CONTAINER -->
-    <div id="ownerLayout">
-        
-        <!-- Emergency Header Panel -->
-        <div class="panic-header-strip">
-            <span style="font-size:12px; font-weight:bold; color:#8b949e;">👑 IMPERIAL COMMAND CENTER</span>
-            <button class="btn-panic" onclick="triggerEmergencyBlackoutKillSwitch()">💥 PANIC BUTTON</button>
+    <div class="owner-container">
+        <div id="owner-auth" class="card" style="max-width: 420px; margin: 60px auto;">
+            <h3 style="color: #ff007f; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">Master Core Access Gate</h3>
+            <div class="input-group"><input type="text" id="owner-id" placeholder="Master Owner Code"></div>
+            <div class="input-group"><input type="password" id="owner-pass" placeholder="Master Password PIN"></div>
+            <button class="neon-btn" onclick="loginMasterOwner()">Unlock Master Remotes</button>
+            <p id="auth-msg" style="color:#ff007f; margin-top:10px; font-size:13px; text-align:center; font-weight:bold;"></p>
         </div>
-        <!-- 🏠 TAB 1: HOME (LIFETIME METERS, AUDIT MATRIX, UTR VERIFICATION & REMOTE UPDATER) -->
-        <div id="admHomeTab" class="tab-content active">
-            <!-- 📊 Master 3 Meters Grid Layout -->
-            <div class="owner-grid-3">
-                <div class="owner-mini-box">
-                    <p style="font-size:9px; color:#8b949e; text-transform:uppercase;">📊 My All Network</p>
-                    <h3 id="dashTotalEarnings" class="stat-glow-num" style="color:#22c55e;">₹0.00</h3>
-                </div>
-                <div class="owner-mini-box">
-                    <p style="font-size:9px; color:#8b949e; text-transform:uppercase;">🪙 5Sim Balance</p>
-                    <h3 id="dashSimBalance" class="stat-glow-num" style="color:#38bdf8;">₹750</h3>
-                </div>
-                <div class="owner-mini-box">
-                    <p style="font-size:9px; color:#8b949e; text-transform:uppercase;">👥 Total Users</p>
-                    <h3 id="dashTotalUsers" class="stat-glow-num" style="color:#a855f7;">0</h3>
-                </div>
+        <div id="owner-dashboard" class="hidden">
+            <div class="header-bar">
+                <h1>SHUBHAM MASTER REMOTE INTERFACE v3.0</h1>
+                <p style="font-size: 13px; color: #00ffcc; margin-top: 5px; font-weight: bold;">👑 System Mode: Supreme Owner Control Activated</p>
             </div>
 
-            <!-- 📡 DYNAMIC LIVE SYSTEM AUDIT STREAM (Workers & System Detective Logs) -->
-            <div class="panel-card" style="border-color: #a855f7;">
-                <h4>📡 Live System Audit Stream (जासूसी का खुफिया डिब्बा)</h4>
-                <div id="systemStream" style="font-size:11px; color:#a855f7; line-height:1.6; max-height:110px; overflow-y:auto; font-family:monospace; background:#020408; padding:10px; border-radius:6px; border:1px solid #1f2937;">
-                    Awaiting core event transmissions...
-                </div>
-            </div>
-
-            <!-- 💳 DYNAMIC REMOTE SETTINGS LOCK (UPI ID CHANGER & 5-PROXY GATEWAYS) -->
-            <div class="panel-card" style="border-color: #38bdf8;">
-                <h4 style="color:#38bdf8;">⚙️ Master Routing Matrix (UPI ID & 5-Proxy APIs Remotes)</h4>
-                <div style="margin-bottom:12px;">
-                    <label style="font-size:10px; color:#8b949e; display:block; margin-bottom:4px;">💥 CHANGE LIVE UPI ID GATEWAY (जब मन करे बदलें):</label>
-                    <div style="display:flex; gap:10px;">
-                        <input type="text" id="ownerUpiInput" value="shubham77sah@fam" class="inp-text" style="margin:0; color:#22c55e;">
-                        <button class="btn-action" style="background:#2563eb; width:auto; padding:0 20px; box-shadow:none; font-size:11px;" onclick="updateSystemUpiGatewayId()">Save UPI</button>
+            <!-- महा-मीटर मीटर -->
+            <div class="card" style="border-color: #00ffcc;">
+                <h3 style="font-size:16px; color:#00ffcc; text-transform: uppercase;">Global Statistics Infrastructure</h3>
+                <div class="mega-grid">
+                    <div class="mega-box">
+                        <div class="mega-val" id="total-users">0</div>
+                        <div style="font-size:12px; color:#a295c2; margin-top:5px;">Total Registry Nodes</div>
                     </div>
-                </div>
-                <div>
-                    <label style="font-size:10px; color:#8b949e; display:block; margin-bottom:4px;">🌐 CONNECT 5-RESIDENTIAL PROXY API NODE LINK (₹150 Pack):</label>
-                    <div style="display:flex; gap:10px;">
-                        <input type="text" id="ownerProxyInput" placeholder="Paste 5-Proxy API Endpoint link here..." class="inp-text" style="margin:0;">
-                        <button class="btn-action" style="background:#10b981; width:auto; padding:0 20px; box-shadow:none; font-size:11px;" onclick="connectProxyServerMatrix()">Connect</button>
+                    <div class="mega-box" style="border-color: #ff007f;">
+                        <div class="mega-val" style="color: #ff007f;">₹<span id="total-earnings">0.00</span></div>
+                        <div style="font-size:12px; color:#a295c2; margin-top:5px;">LifeTime Earnings (महा-मीटर)</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 💳 EXCLUSIVE OWNER UTR VERIFICATION DESK -->
-            <div class="panel-card" style="border-color: #22c55e;">
-                <h4 style="color:#22c55e;">📥 Owner Exclusive UTR Verification Desk (Money Approver)</h4>
-                <div id="ownerPendingPaymentsGrid" style="display:flex; flex-direction:column; gap:12px; margin-top:10px;">
-                    <!-- Raw deposit client data logs drop loop here -->
+            <!-- लाइव एलान डिब्बा -->
+            <div class="card" style="border-color: #8a2be2;">
+                <h3 style="font-size:16px; color:#8a2be2; margin-bottom:12px;">📢 Broadcast Live Announcement Ticker</h3>
+                <div class="input-group">
+                    <label>Enter Message Packet (Will float on all 35,000 user panels live)</label>
+                    <textarea id="announcement-input" rows="2" placeholder="भाइयों, आज शाम 6 बजे VIP 1 का कड़क ऑफर आने वाला है, रेडी रहो!"></textarea>
                 </div>
+                <button class="neon-btn" style="background: linear-gradient(90deg, #8a2be2, #4a00e0);" onclick="broadcastAnnouncement()">Distribute Live Announcement</button>
+                <p id="announce-status" style="margin-top:10px; font-size:13px; font-weight:bold;"></p>
             </div>
-        </div>
 
-        <!-- 🎫 TAB 2: REMOTES & PROMO GIFT MACHINE GENERATOR -->
-        <div id="admGiftTab" class="tab-content">
-            <div class="panel-card" style="border-color:#eab308;">
-                <h4 style="color:#eab308;">🎫 Gift Code Promo Deployment Terminal</h4>
-                <input type="text" id="gName" placeholder="Promo Secret Name" class="inp-text">
-                <input type="number" id="gVal" placeholder="Wallet Balance Value (₹)" class="inp-text">
-                <button class="btn-action" style="background:#eab308; color:#000; box-shadow:none;" onclick="deployGiftCode()">Deploy Gift Node</button>
+            <!-- यूटीआर वेरिफिकेशन डेस्क -->
+            <div class="card">
+                <h3 style="font-size:16px; color:#ff007f; margin-bottom:12px;">💳 Master UPI UTR Verification Desk</h3>
+                <div id="utr-approval-list"><p style="color:#a295c2; font-size:13px;">Scanning vault pipelines...</p></div>
             </div>
-            
-            <div class="panel-card" style="border-color:#3b82f6;">
-                <h4 style="color:#3b82f6;">👥 Add/Authorize Worker Sub-Admin Access Node</h4>
-                <input type="text" id="newSubName" placeholder="Worker Sub-Admin Name" class="inp-text">
-                <input type="password" id="newSubPass" placeholder="Worker Secure Access Code" class="inp-text">
-                <div style="display:flex; gap:10px;">
-                    <button class="btn-action" style="background:#2563eb; box-shadow:none; flex:1;" onclick="addSubAdminNode()">Authorize Worker</button>
-                    <button class="btn-action" style="background:#7f1d1d; box-shadow:none; flex:1;" onclick="alert('Worker node safely terminated from stack.')">Block Access</button>
-                </div>
-            </div>
-        </div>
 
-        <!-- 💸 TAB 3: MASTER VIP REMOTES DESK (PASSWORD RESET, WALLET, AUTOMATIC DOUBLE WINNER) -->
-        <div id="admUsersTab" class="tab-content">
-            <div class="panel-card" style="border-color: #3b82f6;">
-                <h4 style="color:#3b82f6;">🔐 1. Remote User Password Reset Override Tool (Baat Khatam)</h4>
-                <input type="text" id="passTargetUsr" placeholder="Target Client Mobile Number" class="inp-text">
-                <input type="text" id="passNewVal" placeholder="Enter New Override Password" class="inp-text">
-                <button class="btn-action" style="background:#3b82f6; box-shadow:none;" onclick="overrideUserPassword()">Reset Password</button>
-            </div>
-            
-            <div class="panel-card" style="border-color: #22c55e;">
-                <h4 style="color:#22c55e;">🟢 2. Wallet Force Adjuster Desk Control (Direct Add/Debit)</h4>
-                <div style="display:flex; gap:10px;">
-                    <input type="text" id="tUsr" placeholder="Client Mobile Number" class="inp-text" style="margin:0;">
-                    <input type="number" id="tVal" placeholder="₹" class="inp-text" style="margin:0; width:80px;">
-                    <button class="btn-action" style="background:#22c55e; width:auto; padding:0 20px; box-shadow:none;" onclick="walletAdjust('credit')">Add</button>
-                    <button class="btn-action" style="background:#bd5c00; width:auto; padding:0 20px; box-shadow:none;" onclick="walletAdjust('debit')">Debit</button>
+            <!-- बैलेंस एड्जस्टर -->
+            <div class="card" style="border-color: #ff007f;">
+                <h3 style="font-size:16px; color:#ff007f; margin-bottom:12px;">🛡️ Wallet Force Adjuster (Direct Add/Debit)</h3>
+                <div style="display: flex; gap: 10px;">
+                    <div class="input-group" style="flex: 2;"><input type="text" id="force-phone" placeholder="User mobile node"></div>
+                    <div class="input-group" style="flex: 1;"><input type="number" id="force-amount" placeholder="100"></div>
                 </div>
-            </div>
-            
-            <div class="panel-card" style="border-color: #facc15;">
-                <h4 style="color:#facc15;">🎯 3. Double Cash Winner Rigging (₹31/₹100 Dynamic Allocation)</h4>
-                <div style="margin-bottom:12px; border-bottom:1px solid #1f2937; padding-bottom:10px; display:flex; gap:10px;">
-                    <input type="number" id="highRewardInp" value="200" class="inp-text" style="margin:0; width:50%; font-size:11px;" placeholder="High Reward (Default 200)">
-                    <input type="number" id="stdRewardInp" value="50" class="inp-text" style="margin:0; width:50%; font-size:11px;" placeholder="Std Reward (Default 50)">
+                <div style="display: flex; gap: 10px; margin-top: 5px;">
+                    <button class="neon-btn" onclick="executeForceAdjust('add')">Direct Force Credit</button>
+                    <button class="neon-btn" style="background: #1b1232;" onclick="executeForceAdjust('debit')">Direct Debit</button>
                 </div>
-                <div style="display:flex; gap:10px;">
-                    <input type="text" id="winTargetUsr" placeholder="Target Lucky Winner Mobile Number" class="inp-text" style="margin:0;">
-                    <button class="btn-action" style="width:auto; padding:0 25px; background:#facc15; color:#000;" onclick="rigHighLotteryWinner()">Set Winner & Credit Cash</button>
-                </div>
+                <p id="force-status" style="margin-top:10px; font-size:13px; font-weight:bold;"></p>
             </div>
-        </div>
 
-        <!-- 📱 3 MASTER NAVIGATION MENU BUTTONS FOR STICKY STACK BOTTOM -->
-        <div class="bottom-nav">
-            <button class="nav-item active" onclick="switchTab('admHomeTab', this)"><span>👑</span>Dashboard</button>
-            <button class="nav-item" onclick="switchTab('admGiftTab', this)"><span>🎫</span>Gift Codes/Workers</button>
-            <button class="nav-item" onclick="switchTab('admUsersTab', this)"><span>💸</span>Master Remotes</button>
+            <!-- पासवर्ड ओवरराइड डेस्क -->
+            <div class="card">
+                <h3 style="font-size:16px; color:#00ffcc; margin-bottom:12px;">🔑 Master Client Password Override Desk</h3>
+                <div class="input-group"><input type="text" id="owner-reset-phone" placeholder="Enter target phone node"></div>
+                <div class="input-group"><input type="text" id="owner-reset-pass" placeholder="Enter fresh PIN code"></div>
+                <button class="neon-btn" style="background: #00ffcc; color:#07040d;" onclick="executeOwnerPasswordOverride()">Force Override Credentials</button>
+                <p id="owner-reset-status" style="margin-top:10px; font-size:13px; font-weight:bold;"></p>
+            </div>
+
+            <!-- जासूसी का ब्लैक बॉक्स -->
+            <div class="card">
+                <h3 style="font-size:16px; color:#ff007f; margin-bottom:5px;">📡 Live System Audit Stream</h3>
+                <div class="audit-log" id="system-logs">Initializing tracking listeners...</div>
+            </div>
+            <button class="neon-btn" style="background:#130c22; box-shadow: none; margin-top:10px;" onclick="location.reload()">Secure Terminate Master Session</button>
         </div>
     </div>
     <script>
-        let masterSession = localStorage.getItem('ownerSessionActive');
-        if(masterSession === "OWNERSHUBHAM11") { showOwnerCoreGrid(); }
+        let currentOwnerNode = "Owner Core";
+        let loopInterval = null;
 
-        async function gateValidationRoutine() {
-            const username = document.getElementById('admId').value; const password = document.getElementById('admToken').value;
-            if (username !== "OWNERSHUBHAM11" || password !== "8734812286") return alert("Master Key Credentials Mismatch!");
-            
-            const res = await fetch('/api/admin/login', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username, password }) });
-            const d = await res.json(); 
-            if(d.success) { 
-                localStorage.setItem('ownerSessionActive', username); 
-                showOwnerCoreGrid(); 
-            } else { 
-                alert("Token Mismatch!"); 
+        function loginMasterOwner() {
+            const id = document.getElementById('owner-id').value.trim();
+            const pass = document.getElementById('owner-pass').value.trim();
+            if(id === "OWNERSHUBHAM11" && pass === "8734812286") {
+                document.getElementById('owner-auth').classList.add('hidden');
+                document.getElementById('owner-dashboard').classList.remove('hidden');
+                triggerMasterSyncLoop();
+                loopInterval = setInterval(triggerMasterSyncLoop, 3000);
+            } else {
+                document.getElementById('auth-msg').innerText = "Access Denied: Master Credentials Mismatch!";
             }
         }
 
-        function showOwnerCoreGrid() { 
-            document.getElementById('securityGate').style.display = 'none'; 
-            document.getElementById('ownerLayout').style.display = 'block'; 
-            syncOwnerCounters(); setInterval(syncOwnerCounters, 5000); 
-        }
-        
-        function switchTab(tId, b) { document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(btn=>btn.classList.remove('active')); document.getElementById(tId).classList.add('active'); b.classList.add('active'); }
-        
-        function triggerEmergencyBlackoutKillSwitch() {
-            alert("🚨 EMERGENCY KILL SWITCH SYSTEM DETONATED! All network traffic routes routed to Maintenance Workspace.");
-            window.location.reload();
-        }
-
-        async function updateSystemUpiGatewayId() {
-            let newUpi = document.getElementById('ownerUpiInput').value.trim();
-            if(!newUpi) return alert("Pehle valid UPI ID dalein!");
-            alert("Success Nodes Lock: Dynamic user layout gateway synchronized to: " + newUpi);
-        }
-
-        async function connectProxyServerMatrix() {
-            let pLink = document.getElementById('ownerProxyInput').value.trim();
-            if(!pLink) return alert("Pehle 5-Proxy API Link paste karein!");
-            const res = await fetch('/api/owner/save-proxy', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ proxyLink: pLink }) });
-            let d = await res.json(); alert(d.message); syncOwnerCounters();
-        }
-
-        async function overrideUserPassword() {
-            const username = document.getElementById('passTargetUsr').value; const newPassword = document.getElementById('passNewVal').value;
-            await fetch('/api/admin/reset-password', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username, newPassword, adminName: 'OWNER_SHUBHAM' }) });
-            alert("Client Password Override Lock Completed!"); document.getElementById('passTargetUsr').value=''; document.getElementById('passNewVal').value=''; syncOwnerCounters();
+        async function triggerMasterSyncLoop() {
+            try {
+                const statsRes = await fetch('/api/admin/stats');
+                const stats = await statsRes.json();
+                document.getElementById('total-users').innerText = stats.usersCount;
+                document.getElementById('total-earnings').innerText = stats.totalInvestedFund.toFixed(2);
+                
+                const listRes = await fetch('/api/admin/pending-payments');
+                const list = await listRes.json();
+                const container = document.getElementById('utr-approval-list');
+                if(list.length === 0) {
+                    container.innerHTML = `<p style="color:#a295c2; font-size:13px;">🟢 All deposit routes clear.</p>`;
+                } else {
+                    container.innerHTML = "";
+                    list.forEach(p => {
+                        let div = document.createElement('div');
+                        div.className = "list-item";
+                        div.innerHTML = `<div><strong style="color:#ff007f;">@${p.username}</strong><br><span>₹${p.amount} | UTR: ${p.utr}</span></div><button class="btn-success" onclick="processUtrResolution('${p.id}', 'success')">Success ✅</button>`;
+                        container.appendChild(div);
+                    });
+                }
+                const logsRes = await fetch('/api/owner/notifications');
+                const logs = await logsRes.json();
+                const logContainer = document.getElementById('system-logs');
+                if(logs.length === 0) { logContainer.innerText = "System Idle."; } 
+                else { logContainer.innerHTML = logs.map(l => `[${l.time}] ${l.details}`).join("<br>"); }
+            } catch(e) {}
         }
 
-        async function deployGiftCode() {
-            const codeName = document.getElementById('gName').value; const amount = document.getElementById('gVal').value;
-            await fetch('/api/admin/create-gift', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ codeName, amount }) });
-            alert("Promo Code Node " + codeName + " Online!"); document.getElementById('gName').value=''; document.getElementById('gVal').value=''; syncOwnerCounters();
+        async function processUtrResolution(id, action) {
+            const res = await fetch('/api/admin/verify-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ paymentId: id, action: action, adminName: "Master Owner Node" })
+            });
+            const data = await res.json();
+            if(data.success) triggerMasterSyncLoop();
         }
 
-        async function addSubAdminNode() {
-            const username = document.getElementById('newSubName').value; const password = document.getElementById('newSubPass').value;
-            await fetch('/api/admin/add-sub', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username, password }) });
-            alert("Sub-Admin Worker Registry Logged!"); document.getElementById('newSubName').value=''; document.getElementById('newSubPass').value=''; syncOwnerCounters();
+        async function broadcastAnnouncement() {
+            const text = document.getElementById('announcement-input').value.trim();
+            const statusEl = document.getElementById('announce-status');
+            if(!text) return;
+            const res = await fetch('/api/admin/update-announcement', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            });
+            const data = await res.json();
+            if(data.success) {
+                statusEl.style.color = "#00ffcc";
+                statusEl.innerText = "🎉 Announcement successfully synchronized!";
+                document.getElementById('announcement-input').value = "";
+            }
         }
 
-        async function rigHighLotteryWinner() {
-            const winnerUsername = document.getElementById('winTargetUsr').value;
-            await fetch('/api/admin/set-high-winner', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ winnerUsername }) });
-            alert("Auto Cash Reward Dispatched! Winner set to @" + winnerUsername); document.getElementById('winTargetUsr').value = ''; syncOwnerCounters();
+        async function executeForceAdjust(action) {
+            const username = document.getElementById('force-phone').value.trim();
+            const amount = document.getElementById('force-amount').value;
+            const statusEl = document.getElementById('force-status');
+            if(!username || !amount) return;
+            const res = await fetch('/api/admin/update-balance', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, amount, action, adminName: "Master Owner" })
+            });
+            const data = await res.json();
+            if(data.success) {
+                statusEl.style.color = "#00ffcc";
+                statusEl.innerText = `✅ Success: ${action.toUpperCase()} ₹${amount}`;
+                document.getElementById('force-phone').value = "";
+                document.getElementById('force-amount').value = "";
+                triggerMasterSyncLoop();
+            }
         }
 
-        async function walletAdjust(action) {
-            const username = document.getElementById('tUsr').value; const amount = document.getElementById('tVal').value;
-            await fetch('/api/admin/update-balance', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username, amount, action, adminName: 'OWNER_SHUBHAM' }) });
-            alert("Client Wallet Frame Synced!"); document.getElementById('tUsr').value=''; document.getElementById('tVal').value=''; syncOwnerCounters();
-        }
-
-        async function handleOwnerPaymentAction(paymentId, action) {
-            await fetch('/api/admin/verify-payment', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ paymentId, action, adminName: 'OWNER_SHUBHAM' }) });
-            alert("Processing Ledger Closed!"); syncOwnerCounters();
-        }
-
-        async function syncOwnerCounters() {
-            if(localStorage.getItem('ownerSessionActive') !== "OWNERSHUBHAM11") return;
-            const res = await fetch('/api/admin/stats'); const s = await res.json();
-            document.getElementById('dashTotalUsers').innerText = s.usersCount; 
-            document.getElementById('dashTotalEarnings').innerText = "₹" + s.totalInvestedFund.toFixed(2);
-
-            const nRes = await fetch('/api/owner/notifications'); const n = await nRes.json();
-            if(n.length > 0) document.getElementById('systemStream').innerHTML = n.map(o => "<div><span style='color:#ef4444;'>[" + o.time + "]</span> " + o.details + "</div>").join('');
-            
-            const pRes = await fetch('/api/admin/pending-payments'); const pData = await pRes.json();
-            let pGrid = document.getElementById('ownerPendingPaymentsGrid');
-            if(pData.length === 0) { 
-                pGrid.innerHTML = "<p style='font-size:11px; color:#8b949e; font-style:italic;'>No pending requests in queue.</p>"; 
-            } else { 
-                pGrid.innerHTML = pData.map(p => `
-                    <div style="background:#161b22; padding:10px; border-radius:6px; border:1px solid #22c55e; font-size:12px;">
-                        <b>📱 Mobile: ${p.username}</b> | Amount: <b style="color:#22c55e;">₹${p.amount}</b><br>
-                        UTR: <span style="color:#facc15;">${p.utr}</span>
-                        <div style="display:flex; gap:10px; margin-top:8px;">
-                            <button onclick="handleOwnerPaymentAction('${p.id}', 'success')" style="flex:1; background:#238636; border:none; color:white; padding:5px; border-radius:4px; font-weight:bold; cursor:pointer;">Success ✅</button>
-                            <button onclick="handleOwnerPaymentAction('${p.id}', 'reject')" style="flex:1; background:#da3637; border:none; color:white; padding:5px; border-radius:4px; font-weight:bold; cursor:pointer;">Reject ❌</button>
-                        </div>
-                    </div>
-                `).join(''); 
+        async function executeOwnerPasswordOverride() {
+            const username = document.getElementById('owner-reset-phone').value.trim();
+            const newPassword = document.getElementById('owner-reset-pass').value.trim();
+            const statusEl = document.getElementById('owner-reset-status');
+            if(!username || !newPassword) return;
+            const res = await fetch('/api/admin/reset-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, newPassword, adminName: "Master Owner Control" })
+            });
+            const data = await res.json();
+            if(data.success) {
+                statusEl.style.color = "#00ffcc";
+                statusEl.innerText = `✅ PIN changed successfully!`;
+                document.getElementById('owner-reset-phone').value = "";
+                document.getElementById('owner-reset-pass').value = "";
             }
         }
     </script>
