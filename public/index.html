@@ -1,576 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gmail Maker SMM</title>
+    <title>Premium SMM Matrix Terminal</title>
     <style>
-        * { box-sizing: border-box; margin:0; padding:0; font-family: 'Segoe UI', sans-serif; }
-        body { background: #070913; color: #f1f5f9; min-height: 100vh; padding-bottom: 90px; }
+        /* 🌌 ULTRA-DARK PREMIUM NEON CORE STYLES */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0712; color: #e2d9f3; overflow-x: hidden; padding-bottom: 60px; }
         
-        /* 🔐 ULTRA PREMIUM SHREEWIN MATCH AUTH GATE UI STYLE SHEET */
-        .auth-container { max-width: 380px; margin: 60px auto; padding: 20px; }
-        .auth-box { background: #0c1020; border: 2px solid #ef4444; border-radius: 16px; padding: 25px; box-shadow: 0 0 25px rgba(239,68,68,0.2); text-align: center; }
-        .brand-title { font-size: 24px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-        .brand-title span { color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.5); }
-        .form-input { width: 100%; background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 12px; color: white; font-size: 14px; margin-top: 8px; outline: none; }
-        .form-input:focus { border-color: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.2); }
-        .btn-submit { width: 100%; background: #ef4444; color: white; font-weight: bold; border: none; padding: 14px; border-radius: 8px; cursor: pointer; margin-top: 15px; font-size: 14px; box-shadow: 0 4px 12px rgba(239,68,68,0.3); transition: 0.2s; }
-        .btn-submit:hover { background: #dc2626; }
-        .btn-support-time { background: #1e1b4b; border: 1px solid #6366f1; color: #a855f7; font-size: 11px; font-weight: bold; padding: 10px; border-radius: 8px; cursor: pointer; margin-top: 10px; width: 100%; }
+        /* 📢 NEON MARQUEE ANNOUNCEMENT STRIP (मालिक का लाइव एलान डब्बा) */
+        #announcement-strip {
+            background: linear-gradient(90deg, #8a2be2, #ff007f);
+            color: #ffffff;
+            font-weight: bold;
+            padding: 8px 0;
+            font-size: 14px;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            z-index: 999;
+        }
+        #announcement-strip marquee { width: 100%; display: block; }
 
-        /* 📱 MAIN RUNTIME DASHBOARD LAYOUT MATRIX WINDOWS */
-        #appContainer { display: none; }
-        .tab-content { display: none; padding: 20px; max-width: 600px; margin: 0 auto; }
-        .tab-content.active { display: block; }
-        .panel { background: #0c1020; border: 1px solid #1f2937; border-radius: 14px; padding: 20px; margin-bottom: 22px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .panel-title { font-size: 14px; font-weight: bold; color: #e2e8f0; border-bottom: 1px solid #1f2937; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
+        /* 📱 MAIN STRUCTURE */
+        .header-bar { background-color: #130c22; padding: 15px; text-align: center; border-bottom: 2px solid #ff007f; }
+        .header-bar h1 { font-size: 22px; color: #ff007f; text-shadow: 0 0 10px rgba(255,0,127,0.5); }
+        .container { padding: 15px; max-width: 600px; margin: 0 auto; }
         
-        /* 📱 DYNAMIC LIVE PROGRESS ACTIVITY TICKER MARQUEE DISPLAY GRID */
-        .live-ticker-strip { background: linear-gradient(90deg, #1e1b4b, #0c1020); border: 1px dashed #22c55e; color: #22c55e; padding: 8px 12px; border-radius: 8px; font-size: 11px; font-weight: bold; margin-bottom: 15px; font-family: monospace; display: flex; align-items: center; justify-content: space-between; overflow: hidden; }
+        /* 💳 WALLET MATRIX CARD */
+        .wallet-card {
+            background: linear-gradient(135deg, #180f2b, #0d081b);
+            border: 1px solid #8a2be2;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+        }
+        .wallet-balance { font-size: 36px; font-weight: bold; color: #00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.4); margin: 10px 0; }
         
-        /* 📱 6 BUTTONS BOTTOM NAV FIX SYSTEM */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0c1020; border-top: 1px solid #1f2937; display: flex; justify-content: space-around; padding: 12px 0; z-index: 999; box-shadow: 0 -5px 20px rgba(0,0,0,0.6); }
-        .nav-item { color: #94a3b8; border: none; background: none; font-size: 10px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
-        .nav-item.active { color: #facc15; text-shadow: 0 0 10px rgba(250,204,21,0.3); }
-        
-        /* 🔄 COMPREHENSIVE CONTROL SWITCH MATRIX BLOCKS */
-        .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .btn-cat { background: #111827; border: 1px solid #1f2937; color: #94a3b8; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 12px; cursor: pointer; }
-        .btn-cat.active { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,0.05); }
-        .mode-toggle-box { display: flex; gap: 10px; margin-bottom: 15px; }
-        .btn-mode { flex: 1; background: #111827; border: 1px solid #1f2937; color: white; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; }
-        .btn-mode.active { border-color: #ef4444; background: rgba(239,68,68,0.1); color: #ef4444; }
+        /* 🚨 LIVE ALERT POP-UP STYLING (तुरंत बधाई संदेश बॉक्स) */
+        .live-alert-popup {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: #110924;
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.7);
+            padding: 15px 25px;
+            border-radius: 10px;
+            z-index: 10000;
+            display: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .live-alert-popup.active { display: block; opacity: 1; transform: translateX(-50%) scale(1); }
+        .live-alert-popup h3 { color: #00ffcc; margin-bottom: 5px; }
 
-        /* 🔥 DYNAMIC 100% REAL MATCH SHREEWIN VISUAL BRAND STYLES (WITHDRAW MATRIX EMBEDDED) */
-        .shree-profile-card { background: linear-gradient(135deg, #251b4b, #0c1020); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border: 1px solid #3c2a85; }
-        .shree-vip-badge { background: linear-gradient(90deg, #eae59b, #facc15); color: #000; font-size: 10px; font-weight: 900; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; margin-left: 5px; box-shadow: 0 0 8px rgba(250,204,21,0.4); }
-        .shree-wallet-box { background: linear-gradient(180deg, #161b35, #0c1020); border: 1px solid #2d386b; box-shadow: 0 4px 15px rgba(0,0,0,0.4); border-radius: 12px; padding: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        
-        .shree-action-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; text-align: center; }
-        .shree-action-item { background: #131930; border: 1px solid #232d54; padding: 12px; border-radius: 10px; cursor: pointer; font-size: 10px; font-weight: bold; color: #cbd5e1; transition: 0.2s; }
-        .shree-action-item:hover { border-color: #ef4444; }
-        
-        .shree-history-grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .shree-history-item { background: #131930; border: 1px solid #232d54; padding: 12px; border-radius: 10px; cursor: pointer; text-align: left; }
-        
-        .service-center-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid #1f2937; }
-        .service-icon-box { color: #94a3b8; font-size: 10px; font-weight: bold; cursor: pointer; }
-        .service-icon-box span { display: block; font-size: 20px; margin-bottom: 4px; color: #6366f1; }
-
-        /* Progress Meters Line Styles */
-        .progress-bar-bg { width: 100%; background: #1f2937; border-radius: 10px; height: 12px; overflow: hidden; margin-top: 6px; border: 1px solid #374151; }
-        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #ef4444, #22c55e); width: 15%; transition: width 0.5s ease-in-out; }
-        
-        /* Modals Viewport layout configurations */
-        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 9999; backdrop-filter: blur(8px); }
-        .modal.active { display: flex; }
-        .modal-card { background: #0c1020; border: 2px solid #ef4444; border-radius: 16px; padding: 25px; max-width: 380px; width: 100%; text-align: center; position: relative; box-shadow: 0 0 30px rgba(239,68,68,0.3); }
-        .copy-upi-row { background: #070913; border: 1px dashed #10b981; border-radius: 8px; padding: 12px; margin: 15px 0; display: flex; justify-content: space-between; align-items: center; }
-        .btn-copy-id { background: #10b981; color: white; border: none; padding: 6px 12px; font-size: 11px; font-weight: bold; border-radius: 4px; cursor: pointer; }
-        .timer-banner { background: #1e1b4b; color: #a855f7; border: 1px solid #6366f1; padding: 6px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
-        .tg-channel-card { background: linear-gradient(90deg, #1d2a4a, #17253f); border: 1px solid #38bdf8; border-radius: 10px; padding: 15px; display: flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; margin-top: 15px; }
+        /* INPUTS & BUTTONS MATRIX */
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; font-size: 14px; color: #a295c2; }
+        .input-group input, .input-group select {
+            width: 100%; padding: 12px; background-color: #180f2b; border: 1px solid #4a347a;
+            border-radius: 6px; color: #ffffff; font-size: 16px; outline: none; transition: 0.3s;
+        }
+        .input-group input:focus { border-color: #ff007f; box-shadow: 0 0 8px rgba(255,0,127,0.4); }
+        .neon-btn {
+            width: 100%; padding: 14px; background: linear-gradient(90deg, #8a2be2, #ff007f);
+            border: none; border-radius: 6px; color: #ffffff; font-size: 16px; font-weight: bold;
+            cursor: pointer; box-shadow: 0 0 10px rgba(255,0,127,0.4); transition: 0.3s;
+        }
+        .neon-btn:active { transform: scale(0.98); }
+        .tab-btn-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn {
+            flex: 1; padding: 10px; background-color: #180f2b; border: 1px solid #4a347a;
+            color: #a295c2; border-radius: 6px; cursor: pointer; font-weight: bold;
+        }
+        .tab-btn.active { background-color: #8a2be2; color: #ffffff; border-color: #8a2be2; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <!-- 🔐 MOBILE LOGIN CONTAINER STACK SCREEN -->
-    <div id="authContainer" class="auth-container">
-        <!-- Login Card Layout -->
-        <div id="loginBox" class="auth-box">
-            <div class="brand-title">Gmail Maker <span>SMM</span></div>
-            <form onsubmit="handleUserLogin(event)">
-                <input type="text" id="logPhone" placeholder="Enter Mobile Number" class="form-input" required>
-                <input type="password" id="logPass" placeholder="Enter Password" class="form-input" required>
-                <button type="submit" class="btn-submit">Log In</button>
-                <button type="button" class="btn-support-time" onclick="openTimeLockedSupport()">⏰ Customer Support to Change Password</button>
-                <p style="font-size:12px; color:#94a3b8; margin-top:15px; cursor:pointer;" onclick="showAuthScreen('register')">I have no account? <b style="color:#ef4444;">Register</b></p>
-            </form>
-        </div>
-
-        <!-- Register Card Layout -->
-        <div id="registerBox" class="auth-box" style="display:none;">
-            <div class="brand-title">Gmail Maker <span>SMM</span></div>
-            <h4 style="font-size:13px; color:#94a3b8; margin-bottom:10px;">Create New Account</h4>
-            <form onsubmit="handleUserRegister(event)">
-                <input type="text" id="regName" placeholder="Enter Your Full Name" class="form-input" required>
-                <input type="text" id="regPhone" placeholder="Enter Mobile Number" class="form-input" required>
-                <input type="password" id="regPass" placeholder="Create Password" class="form-input" required>
-                <button type="submit" class="btn-submit">Register Account</button>
-                <p style="font-size:12px; color:#94a3b8; margin-top:15px; cursor:pointer;" onclick="showAuthScreen('login')">Pehle se account hai? <b style="color:#ef4444;">Login</b></p>
-            </form>
-        </div>
-    </div>
-    <!-- 📱 MAIN SYSTEM CORE DASHBOARD APPLICATION CONTAINER -->
-    <div id="appContainer">
-        
-        <!-- 🏠 TAB 1: HOME (GMAIL MACHINE SINGLE/BULK MODE & DYNAMIC PROGRESS) -->
-        <div id="homeTab" class="tab-content active">
-            
-            <!-- ⚡ LIVE FAKE ACTIVITY TICKER STRIP -->
-            <div class="live-ticker-strip">
-                <span>🔥 LIVE SYSTEMS:</span>
-                <span id="liveTickerText">@9835xxxxxx successfully created 20 Bulk Gmails!</span>
-            </div>
-
-            <!-- ₹100 High-Tier Cash Draw Arena (💥 Auto Cash Backing System) -->
-            <div class="panel" style="background: linear-gradient(135deg, #161212, #3b0707); border-color: #ef4444;">
-                <h3 style="color:#f87171;">🏆 High-Tier Ultra Cash Draw (₹100/Ticket)</h3>
-                <p style="font-size:11px; color:#cbd5e1; margin-top:3px;">Prize: <b style="color:#22c55e;">₹200 Instant Cash Wallet Credit!</b> [🔒 Rigged Mod Locked]</p>
-                <div id="highLotteryStatus" style="font-size:12px; color:#facc15; font-weight:bold; margin:10px 0;">Total Tickets Bought: 0</div>
-                <div style="display:flex; justify-content:center; gap:10px; margin-bottom:10px;">
-                    <input type="number" id="highTktCount" value="1" min="1" class="form-input" style="width:70px; margin:0; text-align:center;">
-                    <button onclick="buyLottery('high')" class="btn-submit" style="margin:0; width:auto; padding:0 20px; background:#ef4444;">Buy Tickets</button>
-                </div>
-            </div>
-
-            <!-- ₹31 Standard Cash Draw Arena -->
-            <div class="panel" style="background: linear-gradient(135deg, #0b1120, #1e1035); border-color: #8b5cf6;">
-                <h3 style="color:#c084fc;">🔮 Standard Cyber Cash Draw (₹31/Ticket)</h3>
-                <p style="font-size:11px; color:#94a3b8; margin-top:3px;">Prize: <b style="color:#22c55e;">₹50 Wallet Cash!</b> | Night 10:00 PM Auto Draw (Min 5 Tkts)</p>
-                <div id="stdLotteryStatus" style="font-size:12px; color:#22c55e; font-weight:bold; margin:10px 0;">Loading stats...</div>
-                <div style="display:flex; justify-content:center; gap:10px;">
-                    <input type="number" id="stdTktCount" value="1" min="1" class="form-input" style="width:70px; margin:0; text-align:center;">
-                    <button onclick="buyLottery('standard')" class="btn-submit" style="margin:0; width:auto; padding:0 20px; background:#8b5cf6;">Buy Tickets</button>
-                </div>
-            </div>
-
-            <!-- ⚙️ NEW AUTOMATIC GMAIL MAKER MACHINE CONTROLLER INTERFACE -->
-            <div class="panel">
-                <div class="panel-title">⚙️ Gmail Maker Core Panel</div>
-                
-                <!-- Toggle Mode Buttons Grid -->
-                <div class="mode-toggle-box">
-                    <button id="modeSingleBtn" class="btn-mode active" onclick="toggleGmailMakerMode('single')">Single Mode (₹15)</button>
-                    <button id="modeBulkBtn" class="btn-mode" onclick="toggleGmailMakerMode('bulk')">Bulk Mode (₹12/Mail)</button>
-                </div>
-
-                <!-- 🟢 Form 1: Single Mode Field Blocks Layout -->
-                <div id="gmailSingleFormBlock">
-                    <form onsubmit="handleGmailOrderSubmission(event, 'single')">
-                        <input type="text" id="gSingleName" placeholder="Gmail First/Last Name (e.g. Rahul Kumar)" class="form-input" required>
-                        <input type="password" id="gSinglePass" placeholder="Set Secure Password" class="form-input" required>
-                        <input type="date" id="gSingleDob" class="form-input" required>
-                        <input type="text" id="gSingleAddress" placeholder="Preferred Gmail Username Address (e.g. rahul99)" class="form-input" required>
-                        <button type="submit" class="btn-submit" style="background:#10b981;">Submit Single Order</button>
-                    </form>
-                </div>
-
-                <!-- 🔴 Form 2: Bulk Mode Large Textarea List Input Grid -->
-                <div id="gmailBulkFormBlock" style="display:none;">
-                    <form onsubmit="handleGmailOrderSubmission(event, 'bulk')">
-                        <input type="password" id="gBulkCommonPass" placeholder="Set Common Password for All Accounts" class="form-input" required>
-                        <p style="font-size:11px; color:#94a3b8; margin-top:10px; margin-bottom:2px;">Enter Usernames List Matrix (One name per line):</p>
-                        <textarea id="gBulkUsernamesArea" placeholder="rahul123&#10;amit456&#10;shubham789" class="form-input" style="height:110px; resize:none; font-family:monospace; color:#10b981; font-weight:bold;"></textarea>
-                        <button type="submit" class="btn-submit" style="background:#ef4444;">Submit Bulk Processing Request</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- 💬 TAB 2: CUSTOMER SUPPORT (TWO-WAY CATEGORIZED TICKETS) -->
-        <div id="supportTab" class="tab-content">
-            <div class="panel">
-                <div class="panel-title">💬 Customer Support Center</div>
-                <div class="support-grid">
-                    <button class="btn-cat" onclick="selectCategory('Withdrawal Problem', this)">Withdrawal Problem</button>
-                    <button class="btn-cat" onclick="selectCategory('Deposit Problem', this)">Deposit Problem</button>
-                    <button class="btn-cat" onclick="selectCategory('Game Problem', this)">Game Problem</button>
-                </div>
-                
-                <!-- Input Problem Submission Interface -->
-                <div id="problemFormBox" style="display:none; margin-top:15px; border-top:1px solid #1f2937; padding-top:15px;">
-                    <h5 style="font-size:12px; color:#94a3b8; text-transform:uppercase;" id="selectedCatTitle">Describe Me</h5>
-                    <textarea id="problemDesc" placeholder="Describe your issue details here..." class="form-input" style="height:80px; resize:none;"></textarea>
-                    
-                    <div style="margin-top:10px;">
-                        <label style="font-size:11px; color:#94a3b8; display:block; margin-bottom:4px;">Upload Screenshot (Gallery)</label>
-                        <input type="file" accept="image/*" class="form-input" style="padding:6px; cursor:pointer;">
-                    </div>
-                    <button class="btn-submit" onclick="submitSupportTicket()" style="background:#10b981;">Submit Ticket</button>
-                </div>
-                
-                <!-- History Toggle Controls -->
-                <div style="margin-top:20px; display:flex; gap:10px;">
-                    <button class="btn-cat" style="flex:1;" onclick="toggleSupportView('process')">🔄 Process Query</button>
-                    <button class="btn-cat" style="flex:1;" onclick="toggleSupportView('doubts')">📜 My All Doubts</button>
-                </div>
-
-                <!-- Live Two-Way Chat Logs Dynamic Container -->
-                <div id="ticketLogsContainer" style="margin-top:15px; max-height:230px; overflow-y:auto; display:flex; flex-direction:column; gap:12px;"></div>
-            </div>
-        </div>
-
-        <!-- 👥 TAB 3: REFERRAL SYSTEM (WITH TELEGRAM WIDGET LINK) -->
-        <div id="referralTab" class="tab-content">
-            <div class="panel" style="text-align:center;">
-                <div class="panel-title" style="text-align:left;">👥 Referral & Earn System</div>
-                <p style="font-size:13px; color:#94a3b8;">Aapka Personal Invite Link:</p>
-                <input type="text" id="refLinkUrl" readonly class="form-input" style="text-align:center; color:#10b981; font-weight:bold;">
-                <button class="btn-submit" style="background:#3b82f6;" onclick="alert('Link Copied!')">Copy Link</button>
-                
-                <div style="margin-top:25px; border-top:1px solid #1f2937; padding-top:20px; text-align:left;">
-                    <h4>📢 Official Channels</h4>
-                    <a href="https://t.me" target="_blank" class="tg-channel-card">
-                        <span style="font-size:22px;">🔹</span>
-                        <div>
-                            <b style="color:#fff; font-size:14px; display:block;">Join Telegram Official Channel</b>
-                            <span style="color:#38bdf8; font-size:11px;">Earning • FreeGiveway (MESSAGE WORK)</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- 📈 TAB 4: LIVE GMAIL PROGRESS TRACKING INTERFACE -->
-        <div id="trackingTab" class="tab-content">
-            <div class="panel">
-                <div class="panel-title">📈 Live Gmail Tracking Server</div>
-                <div id="activeProgressContainer" style="display:flex; flex-direction:column; gap:15px;">
-                    <!-- Live tracking updates will render here dynamically inside runtime loops -->
-                    <p style="font-size:11px; color:#94a3b8; font-style:italic;">No active creation orders in queue.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 📬 TAB 5: MY GMAIL ORDER (DELIVERY BOX GRID) -->
-        <div id="inventoryTab" class="tab-content">
-            <div class="panel">
-                <div class="panel-title">📬 My Gmail Order (Delivery Box)</div>
-                <div id="gmailDeliveryBoxContainer" style="background:#02050c; border:1px solid #1f2937; border-radius:8px; padding:15px; font-family:monospace; font-size:13px; color:#38bdf8; min-height:160px; max-height:240px; overflow-y:auto; line-height:1.5;">
-                    // Delivery Vault Locked.<br>Aapke orders ka fresh data yahan live drop hoga.
-                </div>
-            </div>
-        </div>
-
-        <!-- 👤 TAB 6: ACCOUNT (💥 100% REAL SHREEWIN MATCH - WITHDRAWAL FLUSHED CLEAN) -->
-        <div id="accountTab" class="tab-content">
-            <!-- 👑 VIP Profile Header Panel Grid Layout -->
-            <div class="shree-profile-card">
-                <div style="background:#374151; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; border:2px solid #facc15; font-size:24px;">👤</div>
-                <div>
-                    <b id="shreeProfileName" style="font-size:16px; color:#fff; display:block;">MEMBERNNGMT913 <span class="shree-vip-badge">VIP 0</span></b>
-                    <span id="shreeProfileUid" style="font-size:12px; color:#facc15; display:block; margin-top:2px;">UID | 1268412</span>
-                    <span style="font-size:10px; color:#94a3b8; display:block; margin-top:2px;">Last login: 2026-09-26 09:26:00</span>
-                </div>
-            </div>
-
-            <!-- 💳 Total Balance & Enter Wallet Card Window -->
-            <div class="shree-wallet-box">
-                <div>
-                    <span style="font-size:12px; color:#94a3b8; display:block;">Total balance</span>
-                    <h1 id="topWalletBalance" style="color:#fff; font-size:24px; font-weight:bold; margin-top:4px;">₹0.00</h1>
-                </div>
-                <button onclick="openDepositBox()" style="background:#2563eb; color:white; border:none; padding:8px 16px; border-radius:20px; font-size:12px; font-weight:bold; cursor:pointer;">Enter wallet</button>
-            </div>
-
-            <!-- 📊 Quick Action Matrix Icons Row (🚨 Flushed Withdrawal Completely) -->
-            <div class="shree-action-grid-4">
-                <div class="shree-action-item" onclick="alert('Wallet active nodes protected.')"><span style="display:block; font-size:18px; margin-bottom:4px;">💳</span>Wallet</div>
-                <div class="shree-action-item" onclick="openDepositBox()"><span style="display:block; font-size:18px; margin-bottom:4px;">🪙</span>Deposit</div>
-                <div class="shree-action-item" onclick="openPremiumVipUpgradeModal()"><span style="display:block; font-size:18px; margin-bottom:4px;">👑</span>VIP</div>
-            </div>
-
-            <!-- 📜 VIP History & Transaction Cards (🚨 Flushed Withdrawal History Cards) -->
-            <div class="shree-history-grid-4">
-                <div class="shree-history-item" onclick="switchTab('inventoryTab', null)">
-                    <b style="color:#fff; font-size:11px; display:block;">🔹 Game History</b>
-                    <span style="color:#94a3b8; font-size:9px; margin-top:2px; display:block;">My game history</span>
-                </div>
-                <div class="shree-history-item" onclick="alert('No deposit history logs inside network storage nodes yet.')">
-                    <b style="color:#fff; font-size:11px; display:block;">📝 Deposit History</b>
-                    <span style="color:#94a3b8; font-size:9px; margin-top:2px; display:block;">My deposit history</span>
-                </div>
-            </div>
-
-            <!-- 📂 Settings Options Lists Rows Grid Selection -->
-            <div class="panel" style="padding:10px 15px; margin-bottom:15px; display:flex; flex-direction:column; gap:12px;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; color:#cbd5e1;"><span>📢 Notification</span><span style="background:#ef4444; color:white; font-size:10px; padding:2px 6px; border-radius:50%; font-weight:bold;">2</span></div>
-                <div style="display:flex; justify-content:space-between; font-size:13px; cursor:pointer; padding-bottom:8px; border-bottom:1px solid #1f2937;">
-                    <input type="text" id="gCodeInp" placeholder="Enter Promo Secret Code" class="form-input" style="margin:0; padding:6px; font-size:11px; width:70%;">
-                    <button onclick="redeemGiftCode()" style="background:#10b981; border:none; padding:4px 10px; border-radius:4px; font-weight:bold; color:white; font-size:11px;">Redeem</button>
-                </div>
-                <div style="display:flex; justify-content:space-between; font-size:13px; color:#cbd5e1;"><span>🌐 Language</span><span style="color:#94a3b8;">English &gt;</span></div>
-            </div>
-            
-            <!-- 🛠️ 100% REAL MATCH SERVICE CENTER LOWER GRID -->
-            <div class="service-center-layout">
-                <div class="service-icon-box" onclick="alert('System settings optimized.')"><span>⚙️</span>Settings</div>
-                <div class="service-icon-box" onclick="alert('Feedback loop encrypted.')"><span>📝</span>Feedback</div>
-                <div class="service-icon-box" onclick="alert('No new announcements.')"><span>📢</span>Notice</div>
-                <div class="service-icon-box" onclick="switchTab('supportTab', null)"><span>🎧</span>Service</div>
-                <div class="service-icon-box" onclick="alert('Min recharge limit is ₹70. Cost per Bulk mail is ₹12.')"><span>📖</span>Guide</div>
-                <div class="service-icon-box" onclick="alert('Gmail Maker SMM VIP System v3.0')"><span>ℹ️</span>About Us</div>
-            </div>
-            
-            <button class="btn-submit" style="background:#374151; margin-top:20px;" onclick="logOutUserAccount()">🚪 Log Out Account</button>
-        </div>
-
-        <!-- 📱 6 BUTTON FIXED BOTTOM NAVIGATION STICKY NAV BAR -->
-        <div class="bottom-nav">
-            <button class="nav-item active" onclick="switchTab('homeTab', this)"><span>🏠</span>Home</button>
-            <button class="nav-item" onclick="switchTab('supportTab', this)"><span>💬</span>Cust Support</button>
-            <button class="nav-item" onclick="switchTab('referralTab', this)"><span>👥</span>Referral</button>
-            <button class="nav-item" onclick="switchTab('trackingTab', this)"><span>📈</span>Tracking</button>
-            <button class="nav-item" onclick="switchTab('inventoryTab', this)"><span>📬</span>My Gmail</button>
-            <button class="nav-item" onclick="switchTab('accountTab', this)"><span>👤</span>Account</button>
-        </div>
+    <!-- 📢 MASTER ANNOUNCEMENT BAR (लाइव घूमती हुई पट्टी) -->
+    <div id="announcement-strip">
+        <marquee id="marquee-text" behavior="scroll" direction="left">Loading network status feeds...</marquee>
     </div>
 
-    <!-- 💳 5-MINUTE LIVE DEPOSIT MODAL HUB (💥 100% EXCLUSIVE COPY ID METHOD - MIN LIMIT ₹70) -->
-    <div id="payGatewayModal" class="modal">
-        <div class="modal-content modal-card">
-            <button onclick="closeDepositBox()" style="position:absolute; top:12px; right:18px; background:none; border:none; color:white; font-size:24px; cursor:pointer;">&times;</button>
-            <div id="countdownBox" class="timer-banner">⏱️ Secure session ends: 05:00</div>
-            <h4 style="color:#fff; font-size:14px;">Copy Official UPI ID</h4>
-            <p style="font-size:11px; color:#94a3b8; margin-top:4px;">Bina QR error ke direct copy karke payment karein (Min ₹70)</p>
-            
-            <!-- 📋 Clean Clipboard Copy Interface box row -->
-            <div class="copy-upi-row">
-                <span id="targetUpiString" style="color:#10b981; font-weight:bold; font-family:monospace; font-size:14px;">shubham77sah@fam</span>
-                <button type="button" class="btn-copy-id" onclick="copyOfficialUpiIdToClipboard()">Copy ID</button>
-            </div>
-
-            <form onsubmit="sendUtrCode(event)">
-                <input type="number" id="payAmt" placeholder="Exact Cash Paid (Min ₹70)" class="form-input" required>
-                <input type="text" id="payUtr" maxlength="12" placeholder="12-Digit Reference UTR Number" class="form-input" required>
-                <button type="submit" class="btn-submit" style="background:#22c55e;">Submit Code Verification</button>
-            </form>
-        </div>
+    <!-- 🔔 LIVE POP-UP ENGINE (तुरंत अलर्ट दिखने की जगह) -->
+    <div id="alert-popup" class="live-alert-popup">
+        <h3>💰 SYSTEM UPDATE</h3>
+        <p id="alert-popup-text"></p>
     </div>
 
-    <!-- 👑 EXCLUSIVE PREMIUM VIP 1 TIERS UPGRADE MODAL WINDOW -->
-    <div id="premiumVipModal" class="modal">
-        <div class="modal-content modal-card" style="border-color:#facc15; box-shadow:0 0 30px rgba(250,204,21,0.2);">
-            <button onclick="closePremiumVipUpgradeModal()" style="position:absolute; top:12px; right:18px; background:none; border:none; color:white; font-size:24px; cursor:pointer;">&times;</button>
-            <h3 style="color:#facc15; font-size:18px; font-weight:900;">👑 PREMIUM VIP CLUB</h3>
-            <p style="font-size:11px; color:#94a3b8; margin-top:4px;">Upgrade profile tier to unlock high speed modules</p>
+    <div class="header-bar">
+        <h1>SMM MATRIX TERMINAL v3.0</h1>
+    </div>
+
+    <div class="container">
+        <!-- AUTH GATE -->
+        <div id="auth-box" class="wallet-card">
+            <h2 style="margin-bottom: 15px; color: #8a2be2;">Security Login Gate</h2>
+            <div class="input-group">
+                <input type="text" id="login-phone" placeholder="Mobile Number Node">
+            </div>
+            <div class="input-group">
+                <input type="password" id="login-pass" placeholder="Security Password PIN">
+            </div>
+            <div class="tab-btn-container">
+                <button class="neon-btn" onclick="executeAuth('login')">Log In</button>
+                <button class="tab-btn" onclick="executeAuth('register')">Register New</button>
+            </div>
+            <p id="auth-err" style="color: #ff007f; font-size: 14px;"></p>
+        </div>
+        <!-- 🖥️ MAIN USER DASHBOARD FRAMEWORK -->
+        <div id="dashboard-box" class="hidden">
+            <!-- 💳 WALLET DEPOSITORY -->
+            <div class="wallet-card">
+                <p style="color: #a295c2; font-size: 14px;">Available Credit Balance</p>
+                <div class="wallet-balance">₹<span id="user-balance">0.00</span></div>
+                <div class="tab-btn-container" style="margin-top: 15px;">
+                    <button class="tab-btn active" id="btn-tab-order" onclick="switchTab('order')">Order Desk</button>
+                    <button class="tab-btn" id="btn-tab-deposit" onclick="switchTab('deposit')">Add Fund</button>
+                    <button class="tab-btn" id="btn-tab-gift" onclick="switchTab('gift')">Gift Card</button>
+                </div>
+            </div>
+
+            <!-- 📦 SOCIAL MEDIA ORDER ENGINE (Views & Followers Form) -->
+            <div id="tab-order" class="wallet-card">
+                <h3 style="color: #ff007f; margin-bottom: 15px; text-align: left;">Place New Order</h3>
+                <div class="input-group">
+                    <label>Select Service Engine</label>
+                    <select id="order-service">
+                        <option value="views">Instagram Reel Views (₹1 / 1K Mails)</option>
+                        <option value="followers">Instagram Premium Followers (₹50 / 1K Mails)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Target Profile or Content URL</label>
+                    <input type="text" id="order-link" placeholder="https://instagram.com">
+                </div>
+                <div class="input-group">
+                    <label>Quantity Array (Min: 1000)</label>
+                    <input type="number" id="order-qty" value="1000" min="1000" oninput="calculatePrice()">
+                </div>
+                <p style="text-align: left; margin-bottom: 15px; font-size: 14px; color: #00ffcc;">
+                    Estimated Cost: <strong>₹<span id="estimated-cost">1</span></strong>
+                </p>
+                <button class="neon-btn" onclick="submitSmmOrder()">Launch Order Process</button>
+                <p id="order-msg" style="margin-top: 10px; font-size: 14px; color: #ff007f;"></p>
+            </div>
+
+            <!-- 💳 UPI MANUAL DEPOSIT GATEWAY -->
+            <div id="tab-deposit" class="wallet-card hidden">
+                <h3 style="color: #ff007f; margin-bottom: 10px; text-align: left;">Deposit Ledger Registry</h3>
+                <p style="font-size: 13px; color: #a295c2; margin-bottom: 15px; text-align: left;">
+                    नीचे दी गई UPI ID को कॉपी करें और अपने पेमेंट ऐप से पैसे ट्रांसफर करें। फिर 12 अंकों का UTR नंबर यहाँ दर्ज करें।
+                </p>
+                <div class="input-group" style="background-color: #110924; padding: 12px; border-radius: 6px; border: 1px dashed #8a2be2; text-align: center; margin-bottom: 15px;">
+                    <span id="system-upi-id" style="font-weight: bold; color: #ffffff; letter-spacing: 0.5px;">shubham77sah@fam</span>
+                </div>
+                <div class="input-group">
+                    <label>Amount Sent (₹)</label>
+                    <input type="number" id="deposit-amount" placeholder="Enter deposited amount">
+                </div>
+                <div class="input-group">
+                    <label>12-Digit Transaction UTR Ref Number</label>
+                    <input type="text" id="deposit-utr" placeholder="Enter 12-digit UTR Code">
+                </div>
+                <button class="neon-btn" onclick="submitDepositUtr()">Submit UTR Token</button>
+                <p id="deposit-msg" style="margin-top: 10px; font-size: 14px; color: #00ffcc;"></p>
+            </div>
+
+            <!-- 🎟️ PROMO GIFT CARD REDEEM VAULT -->
+            <div id="tab-gift" class="wallet-card hidden">
+                <h3 style="color: #ff007f; margin-bottom: 15px; text-align: left;">Redeem Gift Coupon</h3>
+                <div class="input-group">
+                    <label>Enter Gift Voucher / Code Node</label>
+                    <input type="text" id="gift-code-input" placeholder="e.g. FREE70">
+                </div>
+                <button class="neon-btn" onclick="redeemGiftCode()">Claim Reward Node</button>
+                <p id="gift-msg" style="margin-top: 10px; font-size: 14px; color: #ff007f;"></p>
+            </div>
             
-            <div style="background:#111827; border:1px solid #facc15; border-radius:10px; padding:15px; margin:15px 0; text-align:left; font-size:12px; line-height:1.6;">
-                <b style="color:#fff; display:block; margin-bottom:6px; border-bottom:1px solid #1f2937; padding-bottom:4px;">⚡ VIP 1 Premium Perks:</b>
+            <button class="tab-btn" style="margin-top: 15px; width: 100%;" onclick="logoutSession()">Log Out Account</button>
+        </div>
+    </div>
+    <!-- ⚡ SYSTEM CORE RUNTIME JAVASCRIPT LOGIC -->
     <script>
-        let activeUser = localStorage.getItem('ZunooLoggedInUser');
-        let chosenCategory = ""; let currentView = "process"; let timerInterval;
-        let currentGmailMode = "single";
-        
-        if(activeUser) { showDashboardView(); }
-        
-        function showAuthScreen(screen) { 
-            document.getElementById('loginBox').style.display = screen === 'login' ? 'block' : 'none'; 
-            document.getElementById('registerBox').style.display = screen === 'register' ? 'block' : 'none'; 
-        }
-        
-        async function handleUserRegister(e) {
-            e.preventDefault();
-            let name = document.getElementById('regName').value; 
-            let username = document.getElementById('regPhone').value; 
-            let password = document.getElementById('regPass').value;
-            const res = await fetch('/api/user/register', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ name, username, password }) });
-            let d = await res.json(); alert(d.message); if(d.success) showAuthScreen('login');
-        }
-        
-        async function handleUserLogin(e) {
-            e.preventDefault();
-            let username = document.getElementById('logPhone').value; 
-            let password = document.getElementById('logPass').value;
-            const res = await fetch('/api/user/login', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username, password }) });
-            let d = await res.json(); 
-            if(d.success) { localStorage.setItem('ZunooLoggedInUser', d.username); activeUser = d.username; showDashboardView(); } 
-            else { alert(d.message); }
-        }
-        
-        function showDashboardView() { 
-            document.getElementById('authContainer').style.display = 'none'; 
-            document.getElementById('appContainer').style.display = 'block'; 
-            document.getElementById('refLinkUrl').value = window.location.origin + "/ref=" + activeUser;
-            document.getElementById('shreeProfileName').innerHTML = activeUser + ' <span class="shree-vip-badge" id="vipTextIndicator">VIP 0</span>';
-            document.getElementById('shreeProfileUid').innerText = "UID | " + activeUser.substring(activeUser.length - 6);
-            
-            // ⚡ TRIGGER LIVE FAKE ACTIVITY TICKER ROTATOR ENGINE LOOP
-            startLiveFakeActivityTicker();
-            syncLotteryArena(); setInterval(syncLotteryArena, 5000); 
-        }
-        
-        function logOutUserAccount() { localStorage.removeItem('ZunooLoggedInUser'); window.location.reload(); }
-        
-        function switchTab(tId, b) { 
-            document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active')); 
-            document.querySelectorAll('.nav-item').forEach(btn=>btn.classList.remove('active')); 
-            document.getElementById(tId).classList.add('active'); 
-            if(b && b.classList) b.classList.add('active'); 
-        }
+        let currentActiveUser = null;
+        let profileSyncInterval = null;
 
-        function toggleGmailMakerMode(mode) {
-            currentGmailMode = mode;
-            document.getElementById('modeSingleBtn').classList.toggle('active', mode === 'single');
-            document.getElementById('modeBulkBtn').classList.toggle('active', mode === 'bulk');
-            document.getElementById('gmailSingleFormBlock').style.display = mode === 'single' ? 'block' : 'none';
-            document.getElementById('gmailBulkFormBlock').style.display = mode === 'bulk' ? 'block' : 'none';
-        }
-
-        async function handleGmailOrderSubmission(e, mode) {
-            e.preventDefault();
-            let payload = { username: activeUser, mode: mode };
-            if (mode === 'single') {
-                payload.name = document.getElementById('gSingleName').value;
-                payload.password = document.getElementById('gSinglePass').value;
-                payload.dob = document.getElementById('gSingleDob').value;
-                payload.preferredAddress = document.getElementById('gSingleAddress').value;
+        function calculatePrice() {
+            const service = document.getElementById('order-service').value;
+            const qty = parseInt(document.getElementById('order-qty').value) || 0;
+            let cost = 0;
+            if (service === 'views') {
+                cost = (qty / 1000) * 1; // ₹1 प्रति 1K व्यूज (बिना सप्लायर का 100% आपका मुनाफा)
             } else {
-                payload.password = document.getElementById('gBulkCommonPass').value;
-                let text = document.getElementById('gBulkUsernamesArea').value.trim();
-                if(!text) return alert("Pehle bulk usernames list dalein!");
-                payload.bulkUsernamesList = text.split('\n').map(u => u.trim()).filter(u => u.length > 0);
+                cost = (qty / 1000) * 50; // ₹50 प्रति 1K प्रीमियम फॉलोअर्स
             }
-            const res = await fetch('/api/user/order-gmail', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-            let d = await res.json(); alert(d.message); syncLotteryArena();
+            document.getElementById('estimated-cost').innerText = cost.toFixed(2);
         }
+        document.getElementById('order-service').addEventListener('change', calculatePrice);
 
-        function copyOfficialUpiIdToClipboard() {
-            let upiStr = document.getElementById('targetUpiString').innerText;
-            navigator.clipboard.writeText(upiStr).then(() => {
-                alert("UPI ID Copied Successfully: " + upiStr);
-            }).catch(() => {
-                alert("Copy failed! Aap manually copy kar lein: " + upiStr);
+        function switchTab(target) {
+            ['order', 'deposit', 'gift'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                document.getElementById(`btn-tab-${t}`).classList.remove('active');
             });
+            document.getElementById(`tab-${target}`).classList.remove('hidden');
+            document.getElementById(`btn-tab-${target}`).classList.add('active');
         }
-        
-        function openPremiumVipUpgradeModal() { document.getElementById('premiumVipModal').classList.add('active'); }
-        function closePremiumVipUpgradeModal() { document.getElementById('premiumVipModal').classList.remove('active'); }
-        
-        async function triggerProfileVipUpgradeAction() {
-            // Manual Balance Check validation framework handled inside database node routers
-            const res = await fetch('/api/admin/update-balance', { 
-                method: 'POST', 
-                headers: {'Content-Type':'application/json'}, 
-                body: JSON.stringify({ username: activeUser, amount: 70, action: 'debit', adminName: 'VIP_UPGRADE_BOT' }) 
+
+        async function executeAuth(action) {
+            const username = document.getElementById('login-phone').value.trim();
+            const password = document.getElementById('login-pass').value.trim();
+            if (!username || !password) return errorMsg('auth-err', 'Please enter credentials!');
+
+            const res = await fetch(`/api/user/${action}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
             });
-            let d = await res.json();
-            if(d.success) {
-                alert("🚀 Congratulations! Aapka profile VIP 1 Premium tier par upgrade ho gaya hai.");
-                document.getElementById('vipTextIndicator').innerText = "VIP 1";
-                document.querySelector('.shree-profile-card').style.border = "2px solid #facc15"; // Apply Golden Border Frame
-                closePremiumVipUpgradeModal();
-                syncLotteryArena();
-            } else {
-                alert("Galti: VIP upgrade ke liye wallet balance mein ₹70 hona zaroori hai!");
-            }
-        }
-        
-        function startLiveFakeActivityTicker() {
-            const messages = [
-                "@9835xxxxxx successfully created 20 Bulk Gmails! 🟢",
-                "@7054xxxxxx just upgraded to VIP 1 Premium! 👑",
-                "@6387xxxxxx won ₹200 Cash in High-Tier Draw! 🏆",
-                "@9113xxxxxx submitted 50 accounts request sequence! 🚀",
-                "@8789xxxxxx credited ₹100 via automatic deposit check! 🪙"
-            ];
-            let idx = 0;
-            setInterval(() => {
-                idx = (idx + 1) % messages.length;
-                document.getElementById('liveTickerText').innerText = messages[idx];
-            }, 5000);
-        }
-        function openDepositBox() { document.getElementById('payGatewayModal').classList.add('active'); startTimer(300); }
-        function closeDepositBox() { document.getElementById('payGatewayModal').classList.remove('active'); clearInterval(timerInterval); }
-        
-        function startTimer(duration) {
-            let timer = duration, m, s; clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                m = parseInt(timer / 60, 10); s = parseInt(timer % 60, 10); 
-                m = m < 10 ? "0" + m : m; s = s < 10 ? "0" + s : s; 
-                document.getElementById('countdownBox').innerText = "⏱️ Secure session ends: " + m + ":" + s;
-                if (--timer < 0) { closeDepositBox(); alert("Session Timeout!"); }
-            }, 1000);
-        }
-        
-        function openTimeLockedSupport() { 
-            let h = new Date().getHours(); 
-            if(h >= 15 && h < 18) { alert("Custom Support active. Handle loop active."); } 
-            else { alert("⏳ Password change service is only active between 03:00 PM and 06:00 PM IST! Please come back then."); } 
-        }
-        
-        function selectCategory(cat, btn) { 
-            chosenCategory = cat; document.querySelectorAll('.support-grid .btn-cat').forEach(b => b.classList.remove('active')); 
-            btn.classList.add('active'); document.getElementById('problemFormBox').style.display = 'block'; 
-            document.getElementById('selectedCatTitle').innerText = "Describe Me (" + cat + ")"; 
-        }
-        
-        async function submitSupportTicket() { 
-            let desc = document.getElementById('problemDesc').value; if(!desc) return alert("Pehle apni dikqat likhein!"); 
-            await fetch('/api/user/create-ticket', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username: activeUser, category: chosenCategory, description: desc }) }); 
-            alert("Ticket submitted!"); document.getElementById('problemDesc').value=''; document.getElementById('problemFormBox').style.display='none'; syncLotteryArena(); 
-        }
-
-        async function sendUserSupportReply(tId, inputId) {
-            let msg = document.getElementById(inputId).value.trim(); if(!msg) return alert("Pehle message type karein!");
-            await fetch('/api/admin/reply-ticket', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ ticketId: tId, replyMsg: msg }) });
-            alert("Reply sent!"); syncLotteryArena();
-        }
-        
-        function toggleSupportView(view) { currentView = view; syncLotteryArena(); }
-        async function buyLottery(tier) { let count = tier === 'high' ? document.getElementById('highTktCount').value : document.getElementById('stdTktCount').value; const res = await fetch('/api/lottery/buy', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username: activeUser, count, tier }) }); let d = await res.json(); alert(d.message); syncLotteryArena(); }
-        async function redeemGiftCode() { let code = document.getElementById('gCodeInp').value; const res = await fetch('/api/user/redeem-gift', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username: activeUser, code }) }); let d = await res.json(); alert(d.message); document.getElementById('gCodeInp').value = ''; syncLotteryArena(); }
-        async function sendUtrCode(e) { e.preventDefault(); let amt = document.getElementById('payAmt').value; let utr = document.getElementById('payUtr').value; const res = await fetch('/api/user/submit-utr', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username: activeUser, amount: amt, utr }) }); let d = await res.json(); alert(d.message); if(d.success) closeDepositBox(); }
-        
-        async function syncLotteryArena() {
-            if(!activeUser) return; 
-            
-            // Sync Core Wallet Balances
-            const uRes = await fetch('/api/users'); const uData = await uRes.json(); let me = uData.find(u => u.username === activeUser); if(me) document.getElementById('topWalletBalance').innerText = "₹" + me.balance.toFixed(2);
-            
-            // Sync Lottery Statuses
-            const res = await fetch('/api/lottery/status'); const d = await res.json(); 
-            document.getElementById('stdLotteryStatus').innerText = "Pool: " + d.stdCount + " Tickets";
-            document.getElementById('highLotteryStatus').innerText = "Total Tickets Bought: " + d.highCount;
-            
-            // Sync Live Progress Tracking Meters (💥 0% to 100% Tracking Box Grid Logic)
-            const oRes = await fetch('/api/admin/gmail-orders'); const oData = await oRes.json();
-            let myOrders = oData.filter(o => o.username === activeUser);
-            let trackContainer = document.getElementById('activeProgressContainer');
-            
-            if(myOrders.length === 0) {
-                trackContainer.innerHTML = `<p style="font-size:11px; color:#94a3b8; font-style:italic;">No active creation orders in queue.</p>`;
-            } else {
-                trackContainer.innerHTML = myOrders.map(o => {
-                    let progressAlert = o.progress < 100 ? `<p style="font-size:11px; color:#facc15; font-weight:bold; margin-top:6px; line-height:1.4;">⏳ Please wait for 2-3 hours. Our automated creation engine is matching hyper-secure routing slots to safely build your accounts. Do not close this screen!</p>` : '';
-                    return `
-                        <div style="background:#111827; border:1px solid #1f2937; padding:12px; border-radius:8px;">
-                            <div style="display:flex; justify-content:between; font-size:12px; font-weight:bold;">
-                                <span style="color:#ef4444;">[${o.mode}] ID: ${o.id}</span>
-                                <span style="color:#22c55e;">Status: ${o.status} (${o.progress}%)</span>
-                            </div>
-                            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: ${o.progress}%;"></div></div>
-                            ${progressAlert}
-                        </div>
-                    `;
-                }).join('');
-            }
-            
-            // Sync Live Inventory Box Grid Layout 
-            let dBox = document.getElementById('gmailDeliveryBoxContainer');
-            if(myOrders.length === 0) { dBox.innerHTML = `// Delivery Vault Locked.<br>Aapke orders ka fresh data yahan live drop hoga.`; }
-            else { dBox.innerHTML = myOrders.map(o => `<div style="border-bottom:1px solid #1f2937; padding:4px 0;"><span style="color:#38bdf8;">[${o.id}]</span> Status: <b style="color:#22c55e;">${o.status}</b><br><span style="color:#10b981; font-weight:bold;">Pass: ${o.password}</span><br><span style="color:#94a3b8; font-size:11px;">${o.details}</span></div>`).join(''); }
-
-            // Sync Support Live Chat Problems
-            const tRes = await fetch('/api/tickets/all'); const tData = await tRes.json(); let myTickets = tData.filter(t => t.username === activeUser); let container = document.getElementById('ticketLogsContainer'); 
-            let targetStatus = currentView === 'process' ? 'Process Query' : 'My All Doubts'; let displayTkts = myTickets.filter(t => t.status === targetStatus);
-            if(displayTkts.length === 0) { container.innerHTML = "<p style='font-size:11px; color:#94a3b8; font-style:italic;'>No tickets here.</p>"; return; }
-            
-            let htmlStr = "";
-            for(let i=0; i<displayTkts.length; i++) {
-                let t = displayTkts[i];
-                htmlStr += "<div class='panel' style='padding:15px; margin-bottom:0; font-size:12px; border:1px solid #1f2937;'>";
-                htmlStr += "<b style='color:#ef4444;'>[" + t.category + "] ID: " + t.id + "</b>";
-                htmlStr += "<p style='color:#fff; margin-top:6px; background:#111827; padding:6px; border-radius:4px;'><b>Me:</b> " + t.description + "</p>";
-                htmlStr += "<p style='color:#38bdf8; margin-top:6px; background:#1e1b4b; padding:6px; border-radius:4px;'><b>Supporter:</b> " + t.reply + "</p>";
-                if(t.status === 'Process Query') {
-                    htmlStr += "<div style='display:flex; gap:8px; margin-top:10px;'>";
-                    htmlStr += "<input type='text' id='usrRepInp_" + i + "' placeholder='Type message to supporter...' class='form-input' style='margin:0; padding:6px; font-size:11px;'>";
-                    htmlStr += "<button onclick=\"sendUserSupportReply('" + t.id + "', 'usrRepInp_" + i + "')\" style='background:#3b82f6; border:none; padding:0 12px; border-radius:6px; color:white; font-weight:bold; font-size:11px; cursor:pointer;'>Reply</button>";
-                    htmlStr += "</div>";
+            const data = await res.json();
+            if (data.success) {
+                if (action === 'register') {
+                    alert('Registration complete! Please Log In now.');
+                } else {
+                    currentActiveUser = data.username;
+                    document.getElementById('auth-box').classList.add('hidden');
+                    document.getElementById('dashboard-box').classList.remove('hidden');
+                    document.getElementById('user-balance').innerText = data.balance.toFixed(2);
+                    startGlobalSyncLoop();
                 }
-                htmlStr += "</div>";
+            } else {
+                errorMsg('auth-err', data.message);
             }
-            container.innerHTML = htmlStr;
+        }
+
+        // 🔔 AUTOMATIC LIVE SYSTEM AUDIT LOOP (बिना लॉग-आउट किए तुरंत बैलेंस अपडेट और अलर्ट इंजन)
+        function startGlobalSyncLoop() {
+            fetchSystemAnnouncement();
+            if (profileSyncInterval) clearInterval(profileSyncInterval);
+            profileSyncInterval = setInterval(async () => {
+                if (!currentActiveUser) return;
+                try {
+                    const res = await fetch('/api/user/sync-profile', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username: currentActiveUser })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        document.getElementById('user-balance').innerText = data.balance.toFixed(2);
+                        // अगर ओनर ने UTR सक्सेस किया है, तो लाइव पॉप-अप मैसेज फ्लैश होगा
+                        if (data.alertMessage) {
+                            triggerLivePopupAlert(data.alertMessage);
+                        }
+                    }
+                } catch(e) {}
+            }, 3000); // हर 3 सेकंड में बिना रीफ्रेश किए डेटाबेस तिजोरी से ऑटो-सिंक होगा
+        }
+
+        function triggerLivePopupAlert(msg) {
+            const popup = document.getElementById('alert-popup');
+            document.getElementById('alert-popup-text').innerText = msg;
+            popup.classList.add('active');
+            setTimeout(() => { popup.classList.remove('active'); }, 6000);
+        }
+
+        async function fetchSystemAnnouncement() {
+            try {
+                const res = await fetch('/api/system/announcement');
+                const data = await res.json();
+                if (data.announcement) {
+                    document.getElementById('marquee-text').innerText = data.announcement;
+                }
+            } catch(e) {}
+        }
+
+        async function submitSmmOrder() {
+            const service = document.getElementById('order-service').value;
+            const link = document.getElementById('order-link').value.trim();
+            const qty = parseInt(document.getElementById('order-qty').value) || 0;
+            if (!link || qty < 1000) return errorMsg('order-msg', 'Fill all fields correctly!');
+
+            const res = await fetch('/api/admin/verify-payment', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ dummy: true }) }); 
+            errorMsg('order-msg', '✨ Order Accepted! Initializing automated server route...', '#00ffcc');
+        }
+
+        async function submitDepositUtr() {
+            const amount = document.getElementById('deposit-amount').value;
+            const utr = document.getElementById('deposit-utr').value.trim();
+            if (!amount || utr.length < 12) return errorMsg('deposit-msg', 'Enter proper amount and 12-digit UTR!');
+
+            const res = await fetch('/api/user/submit-utr', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: currentActiveUser, amount, utr })
+            });
+            const data = await res.json();
+            errorMsg('deposit-msg', data.message, data.success ? '#00ffcc' : '#ff007f');
+        }
+
+        async function redeemGiftCode() {
+            const codeName = document.getElementById('gift-code-input').value.trim();
+            if (!codeName) return errorMsg('gift-msg', 'Enter promo voucher!');
+
+            const res = await fetch('/api/user/redeem-gift', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: currentActiveUser, codeName })
+            });
+            const data = await res.json();
+            errorMsg('gift-msg', data.message, data.success ? '#00ffcc' : '#ff007f');
+        }
+
+        function errorMsg(id, msg, color = '#ff007f') {
+            const el = document.getElementById(id);
+            el.innerText = msg;
+            el.style.color = color;
+        }
+
+        function logoutSession() {
+            currentActiveUser = null;
+            if (profileSyncInterval) clearInterval(profileSyncInterval);
+            document.getElementById('dashboard-box').classList.add('hidden');
+            document.getElementById('auth-box').classList.remove('hidden');
         }
     </script>
 </body>
