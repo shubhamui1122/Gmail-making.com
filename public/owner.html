@@ -1,223 +1,261 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Owner Command Terminal</title>
+    <title>NET-MATRIX SUPREME OWNER VAULT</title>
     <style>
-        /* 🌌 ULTRA-PREMIUM CYBERPUNK OWNER PANEL STYLES */
+        /* 🌌 ULTIMATE CYBERPUNK MATTE BLACK & GHOST WHITE INFRASTRUCTURE */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #07040d; color: #e2d9f3; padding: 15px; }
-        .owner-container { max-width: 800px; margin: 0 auto; }
-        .header-bar { 
-            background: linear-gradient(135deg, #1f0b3d, #0b0712); 
-            padding: 20px; border-radius: 12px; text-align: center; 
-            border: 2px solid #ff007f; box-shadow: 0 0 20px rgba(255, 0, 127, 0.4); margin-bottom: 25px; 
+        body { background-color: #080808; color: #F5F5F5; overflow-x: hidden; padding-bottom: 60px; }
+        .app-container { padding: 15px; max-width: 600px; margin: 0 auto; }
+        
+        /* 🔒 OWNER SECURITY ACCESS BARRIER LOCK */
+        .owner-lock-gate { background-color: #121212; border: 1px solid #FF3B30; border-radius: 16px; padding: 30px; margin-top: 50px; text-align: center; }
+        .owner-lock-gate h1 { font-size: 18px; color: #FFFFFF; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255,59,48,0.5); }
+        
+        /* 📊 LIFETIME REVENUE REPOSIT VAULT (महा-मीटर) */
+        .lifetime-mega-meter {
+            background: linear-gradient(135deg, #161616, #090909); border: 2px solid #222222;
+            border-radius: 16px; padding: 25px; text-align: center; margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6); position: relative;
         }
-        .header-bar h1 { color: #ff007f; font-size: 24px; text-shadow: 0 0 12px rgba(255,0,127,0.6); }
-        .card { background-color: #120924; border: 1px solid #8a2be2; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(138, 43, 226, 0.2); }
-        .mega-grid { display: flex; gap: 15px; margin-top: 15px; }
-        .mega-box { flex: 1; background: linear-gradient(180deg, #190e34, #0b0712); padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #4a347a; }
-        .mega-val { font-size: 28px; font-weight: bold; color: #00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.5); }
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 5px; font-size: 13px; color: #a295c2; font-weight: bold; }
-        .input-group input, .input-group textarea { width: 100%; padding: 12px; background-color: #07040d; border: 1px solid #4a347a; border-radius: 6px; color: #fff; font-size: 15px; outline: none; transition: 0.3s; }
-        .input-group input:focus, .input-group textarea:focus { border-color: #ff007f; box-shadow: 0 0 10px rgba(255,0,127,0.3); }
-        .neon-btn { width: 100%; padding: 14px; background: linear-gradient(90deg, #ff007f, #8a2be2); border: none; border-radius: 6px; color: #fff; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 0 12px rgba(255,0,127,0.4); }
-        .list-item { background-color: #07040d; padding: 15px; border-radius: 6px; border-left: 4px solid #00ffcc; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
-        .btn-success { background-color: #00ffcc; color: #07040d; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; cursor: pointer; }
-        .audit-log { background-color: #07040d; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px; color: #ff007f; max-height: 200px; overflow-y: auto; border: 1px solid #23133d; margin-top: 10px; }
-        .hidden { display: none; }
+        .mega-meter-label { font-size: 11px; font-weight: 900; color: #666666; text-transform: uppercase; letter-spacing: 1.5px; }
+        .mega-meter-value { font-size: 38px; font-weight: 900; color: #FFFFFF; margin-top: 6px; letter-spacing: -1px; }
+
+        /* INTERFACE OPERATIONS CARDS CONTAINER */
+        .owner-action-card { background-color: #121212; border: 1px solid #1c1c1c; border-radius: 14px; padding: 20px; margin-bottom: 20px; }
+        .owner-action-card h3 { font-size: 13px; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 15px; font-weight: 800; border-bottom: 1px dashed #222; padding-bottom: 8px; }
+        
+        .owner-input-box {
+            width: 100%; padding: 12px; background-color: #080808; border: 1px solid #222222;
+            border-radius: 8px; color: #FFFFFF; font-size: 14px; outline: none; margin-bottom: 12px;
+        }
+        .owner-input-box:focus { border-color: #FFFFFF; }
+        
+        /* DYNAMIC LEDGER LIST STYLES (विथड्रॉल ऑडिट महा-लिस्ट) */
+        .withdrawal-request-node {
+            background-color: #0d0d0d; border: 1px solid #1c1c1c; border-radius: 10px;
+            padding: 15px; margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;
+        }
+        .request-header-row { display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; text-transform: uppercase; color: #888; }
+        
+        /* ⚡ TWO MAGIC BUTTONS INJECTED HERE (SUCCESS VS REJECT) */
+        .action-button-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px; }
+        .btn-owner-success { padding: 10px; background-color: rgba(0, 255, 204, 0.1); color: #00FFCC; border: 1px solid #00FFCC; border-radius: 6px; font-size: 11px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
+        .btn-owner-success:active { background-color: #00FFCC; color: #000; }
+        .btn-owner-reject { padding: 10px; background-color: rgba(255, 59, 48, 0.1); color: #FF3B30; border: 1px solid #FF3B30; border-radius: 6px; font-size: 11px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
+        .btn-owner-reject:active { background-color: #FF3B30; color: #000; }
     </style>
 </head>
 <body>
-    <div class="owner-container">
-        <div id="owner-auth" class="card" style="max-width: 420px; margin: 60px auto;">
-            <h3 style="color: #ff007f; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">Master Core Access Gate</h3>
-            <div class="input-group"><input type="text" id="owner-id" placeholder="Master Owner Code"></div>
-            <div class="input-group"><input type="password" id="owner-pass" placeholder="Master Password PIN"></div>
-            <button class="neon-btn" onclick="loginMasterOwner()">Unlock Master Remotes</button>
-            <p id="auth-msg" style="color:#ff007f; margin-top:10px; font-size:13px; text-align:center; font-weight:bold;"></p>
-        </div>
-        <div id="owner-dashboard" class="hidden">
-            <div class="header-bar">
-                <h1>SHUBHAM MASTER REMOTE INTERFACE v3.0</h1>
-                <p style="font-size: 13px; color: #00ffcc; margin-top: 5px; font-weight: bold;">👑 System Mode: Supreme Owner Control Activated</p>
-            </div>
-
-            <!-- महा-मीटर मीटर -->
-            <div class="card" style="border-color: #00ffcc;">
-                <h3 style="font-size:16px; color:#00ffcc; text-transform: uppercase;">Global Statistics Infrastructure</h3>
-                <div class="mega-grid">
-                    <div class="mega-box">
-                        <div class="mega-val" id="total-users">0</div>
-                        <div style="font-size:12px; color:#a295c2; margin-top:5px;">Total Registry Nodes</div>
-                    </div>
-                    <div class="mega-box" style="border-color: #ff007f;">
-                        <div class="mega-val" style="color: #ff007f;">₹<span id="total-earnings">0.00</span></div>
-                        <div style="font-size:12px; color:#a295c2; margin-top:5px;">LifeTime Earnings (महा-मीटर)</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- लाइव एलान डिब्बा -->
-            <div class="card" style="border-color: #8a2be2;">
-                <h3 style="font-size:16px; color:#8a2be2; margin-bottom:12px;">📢 Broadcast Live Announcement Ticker</h3>
-                <div class="input-group">
-                    <label>Enter Message Packet (Will float on all 35,000 user panels live)</label>
-                    <textarea id="announcement-input" rows="2" placeholder="भाइयों, आज शाम 6 बजे VIP 1 का कड़क ऑफर आने वाला है, रेडी रहो!"></textarea>
-                </div>
-                <button class="neon-btn" style="background: linear-gradient(90deg, #8a2be2, #4a00e0);" onclick="broadcastAnnouncement()">Distribute Live Announcement</button>
-                <p id="announce-status" style="margin-top:10px; font-size:13px; font-weight:bold;"></p>
-            </div>
-
-            <!-- यूटीआर वेरिफिकेशन डेस्क -->
-            <div class="card">
-                <h3 style="font-size:16px; color:#ff007f; margin-bottom:12px;">💳 Master UPI UTR Verification Desk</h3>
-                <div id="utr-approval-list"><p style="color:#a295c2; font-size:13px;">Scanning vault pipelines...</p></div>
-            </div>
-
-            <!-- बैलेंस एड्जस्टर -->
-            <div class="card" style="border-color: #ff007f;">
-                <h3 style="font-size:16px; color:#ff007f; margin-bottom:12px;">🛡️ Wallet Force Adjuster (Direct Add/Debit)</h3>
-                <div style="display: flex; gap: 10px;">
-                    <div class="input-group" style="flex: 2;"><input type="text" id="force-phone" placeholder="User mobile node"></div>
-                    <div class="input-group" style="flex: 1;"><input type="number" id="force-amount" placeholder="100"></div>
-                </div>
-                <div style="display: flex; gap: 10px; margin-top: 5px;">
-                    <button class="neon-btn" onclick="executeForceAdjust('add')">Direct Force Credit</button>
-                    <button class="neon-btn" style="background: #1b1232;" onclick="executeForceAdjust('debit')">Direct Debit</button>
-                </div>
-                <p id="force-status" style="margin-top:10px; font-size:13px; font-weight:bold;"></p>
-            </div>
-
-            <!-- पासवर्ड ओवरराइड डेस्क -->
-            <div class="card">
-                <h3 style="font-size:16px; color:#00ffcc; margin-bottom:12px;">🔑 Master Client Password Override Desk</h3>
-                <div class="input-group"><input type="text" id="owner-reset-phone" placeholder="Enter target phone node"></div>
-                <div class="input-group"><input type="text" id="owner-reset-pass" placeholder="Enter fresh PIN code"></div>
-                <button class="neon-btn" style="background: #00ffcc; color:#07040d;" onclick="executeOwnerPasswordOverride()">Force Override Credentials</button>
-                <p id="owner-reset-status" style="margin-top:10px; font-size:13px; font-weight:bold;"></p>
-            </div>
-
-            <!-- जासूसी का ब्लैक बॉक्स -->
-            <div class="card">
-                <h3 style="font-size:16px; color:#ff007f; margin-bottom:5px;">📡 Live System Audit Stream</h3>
-                <div class="audit-log" id="system-logs">Initializing tracking listeners...</div>
-            </div>
-            <button class="neon-btn" style="background:#130c22; box-shadow: none; margin-top:10px;" onclick="location.reload()">Secure Terminate Master Session</button>
+    <!-- 🔒 STAGE A: SUPREME SECURITY ACCESS GATE -->
+    <div class="app-container" id="owner-gate-lockview">
+        <div class="owner-lock-gate">
+            <h1>Master Owner Authentication Required</h1>
+            <input type="text" id="owner-master-code-input" class="owner-input-box" placeholder="Enter Supreme Master Code">
+            <input type="password" id="owner-master-pin-input" class="owner-input-box" placeholder="Enter Security Password PIN">
+            <button style="width:100%; padding:14px; background-color:#FFF; color:#000; font-weight:900; text-transform:uppercase; border:none; border-radius:8px; cursor:pointer;" onclick="verifyOwnerSupremeCredentials()">Unlock Master Console</button>
+            <div style="color:#FF3B30; font-size:13px; font-weight:bold; margin-top:10px;" id="gate-error-response"></div>
         </div>
     </div>
-    <script>
-        let currentOwnerNode = "Owner Core";
-        let loopInterval = null;
 
-        function loginMasterOwner() {
-            const id = document.getElementById('owner-id').value.trim();
-            const pass = document.getElementById('owner-pass').value.trim();
-            if(id === "OWNERSHUBHAM11" && pass === "8734812286") {
-                document.getElementById('owner-auth').classList.add('hidden');
-                document.getElementById('owner-dashboard').classList.remove('hidden');
-                triggerMasterSyncLoop();
-                loopInterval = setInterval(triggerMasterSyncLoop, 3000);
+    <!-- 👑 STAGE B: FULL AUTOMATED SUPREME OPERATION CONSOLE (MAIN DASHBOARD) -->
+    <div class="app-container hidden" id="owner-dashboard-console">
+        
+        <!-- 📊 LIFETIME REVENUE REPOSIT VAULT ENGINE (महा-मीटर - Never Resets to 0) -->
+        <div class="lifetime-mega-meter">
+            <div class="mega-meter-label">Lifetime Earnings Mega-Meter [ \$1 = ₹95 Scale ]</div>
+            <div class="mega-meter-value" id="owner-lifetime-revenue">₹0.00</div>
+        </div>
+
+        <!-- 🚦 CENTRAL WITHDRAWAL VAULT (सारे विथड्रॉल रिक्वेस्ट सीधे यहाँ) -->
+        <div class="owner-action-card">
+            <h3>Central Withdrawal Verification Vault</h3>
+            <div id="owner-withdrawal-queue-list">
+                <!-- Live pending ledger requests inject automatically via backend mapping loops -->
+                <div style="font-size:12px; color:#444; font-weight:bold; text-align:center; padding:10px;">No pending withdrawal settlement packages detected.</div>
+            </div>
+        </div>
+
+        <!-- 📢 SUPREME BROADCAST ANNOUNCEMENT DESK -->
+        <div class="owner-action-card">
+            <h3>Supreme Broadcast Announcement Desk</h3>
+            <input type="text" id="master-broadcast-input" class="owner-input-box" placeholder="Type supreme layout alert message ticker here...">
+            <button style="width:100%; padding:12px; background-color:#FFF; color:#000; font-weight:900; text-transform:uppercase; border:none; border-radius:8px; cursor:pointer;" onclick="deploySupremeBroadcast()">Deploy Supreme Packet</button>
+            <div style="font-size:11px; font-weight:bold; color:#00FFCC; text-align:center; margin-top:8px;" id="master-broadcast-response"></div>
+        </div>
+
+        <!-- 🎟️ MASTER GIFT VOUCHER GENERATOR CONTROL -->
+        <div class="owner-action-card">
+            <h3>Master Gift Voucher Generator</h3>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+                <input type="text" id="voucher-create-name" style="margin-bottom:0;" class="owner-input-box" placeholder="Voucher Code Name">
+                <input type="number" id="voucher-create-value" style="margin-bottom:0;" class="owner-input-box" placeholder="Bonus Value (₹)">
+            </div>
+            <button style="width:100%; padding:12px; background-color:#FFF; color:#000; font-weight:900; text-transform:uppercase; border:none; border-radius:8px; cursor:pointer;" onclick="generateMasterGiftVoucher()">Deploy Master Code Voucher</button>
+            <div style="font-size:11px; font-weight:bold; color:#00FFCC; text-align:center; margin-top:8px;" id="master-voucher-response"></div>
+        </div>
+
+        <!-- 💀 DEAD ADMIN REMOTES INTEGRATION ROW (The Ultimate Kill-Switch) -->
+        <div class="owner-action-card">
+            <h3>Dead Admin Kill-Switch Panel</h3>
+            <div style="display:flex; gap:8px;">
+                <input type="text" id="target-kill-admin-username" style="margin-bottom:0;" class="owner-input-box" placeholder="Enter target sub-admin login ID">
+                <button style="padding:0 15px; background-color:#FF3B30; color:#FFF; border:none; border-radius:8px; font-size:12px; font-weight:900; text-transform:uppercase; cursor:pointer;" onclick="executeDeadAdminKillSwitch()">Terminate Access</button>
+            </div>
+            <div style="font-size:11px; font-weight:bold; color:#FF3B30; text-align:center; margin-top:8px;" id="kill-switch-response"></div>
+        </div>
+
+    </div>
+    <!-- ⚡ SUPREME CONSOLE ADMINISTRATIVE BACKEND INTERACTION SCRIPTS -->
+    <script>
+        let sessionMasterCode = "";
+        let sessionMasterPin = "";
+
+        function verifyOwnerSupremeCredentials() {
+            const mCode = document.getElementById('owner-master-code-input').value.trim();
+            const mPin = document.getElementById('owner-master-pin-input').value.trim();
+            const gateErr = document.getElementById('gate-error-response');
+            
+            // 🔒 स्पेशल ओनर क्रेडेंशियल्स की कड़ाई से जांच
+            if(mCode === "OWNERSHUBHAM11" && mPin === "8734812286") {
+                sessionMasterCode = mCode;
+                sessionMasterPin = mPin;
+                document.getElementById('owner-gate-lockview').classList.add('hidden');
+                document.getElementById('owner-dashboard-console').classList.remove('hidden');
+                
+                // सुप्रीम कंसोल डेटा फेच सिंक लूप चालू करना
+                synchronizeOwnerMegaConsole();
+                setInterval(synchronizeOwnerMegaConsole, 5000);
             } else {
-                document.getElementById('auth-msg').innerText = "Access Denied: Master Credentials Mismatch!";
+                gateErr.innerText = "❌ Access Denied: Invalid Supreme Commander Cryptograph Parameters!";
             }
         }
 
-        async function triggerMasterSyncLoop() {
+        async function synchronizeOwnerMegaConsole() {
             try {
-                const statsRes = await fetch('/api/admin/stats');
-                const stats = await statsRes.json();
-                document.getElementById('total-users').innerText = stats.usersCount;
-                document.getElementById('total-earnings').innerText = stats.totalInvestedFund.toFixed(2);
+                // महा-मीटर और विथड्रॉल कतार फेच करना
+                const res = await fetch(`/api/owner/dashboard-intel?code=${sessionMasterCode}&pin=${sessionMasterPin}`);
+                const data = await res.json();
                 
-                const listRes = await fetch('/api/admin/pending-payments');
-                const list = await listRes.json();
-                const container = document.getElementById('utr-approval-list');
-                if(list.length === 0) {
-                    container.innerHTML = `<p style="color:#a295c2; font-size:13px;">🟢 All deposit routes clear.</p>`;
-                } else {
-                    container.innerHTML = "";
-                    list.forEach(p => {
-                        let div = document.createElement('div');
-                        div.className = "list-item";
-                        div.innerHTML = `<div><strong style="color:#ff007f;">@${p.username}</strong><br><span>₹${p.amount} | UTR: ${p.utr}</span></div><button class="btn-success" onclick="processUtrResolution('${p.id}', 'success')">Success ✅</button>`;
-                        container.appendChild(div);
-                    });
+                if(data.success) {
+                    // ₹10.75 प्रति GB शुद्ध मुनाफ़ा महा-मीटर में लाइव अपडेट करना
+                    document.getElementById('owner-lifetime-revenue').innerText = `\u20B9${data.lifetimeRevenue.toFixed(2)}`;
+                    
+                    // विथड्रॉल कतार लिस्ट रेंडर करना
+                    renderOwnerWithdrawalQueue(data.pendingQueue);
                 }
-                const logsRes = await fetch('/api/owner/notifications');
-                const logs = await logsRes.json();
-                const logContainer = document.getElementById('system-logs');
-                if(logs.length === 0) { logContainer.innerText = "System Idle."; } 
-                else { logContainer.innerHTML = logs.map(l => `[${l.time}] ${l.details}`).join("<br>"); }
             } catch(e) {}
         }
 
-        async function processUtrResolution(id, action) {
-            const res = await fetch('/api/admin/verify-payment', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ paymentId: id, action: action, adminName: "Master Owner Node" })
+        function renderOwnerWithdrawalQueue(queue) {
+            const listContainer = document.getElementById('owner-withdrawal-queue-list');
+            if(!queue || queue.length === 0) {
+                listContainer.innerHTML = `<div style="font-size:12px; color:#444; font-weight:bold; text-align:center; padding:10px;">No pending withdrawal settlement packages detected.</div>`;
+                return;
+            }
+
+            let html = "";
+            queue.forEach(tx => {
+                // ₹6 GST काटने के बाद मिलने वाला शुद्ध अमाउंट लाइव कैलकुलेट करके दिखाना
+                const finalPayableAmount = tx.amount - 6.00;
+                
+                html += `
+                    <div class="withdrawal-request-node">
+                        <div class="request-header-row">
+                            <span>ID: #${tx.orderId}</span>
+                            <span>Mode: ${tx.channel}</span>
+                        </div>
+                        <div style="font-size:13px; font-weight:bold; margin:3px 0;">📱 Mobile Node: ${tx.username}</div>
+                        <div style="font-size:13px; font-weight:bold; color:#00FFCC;">💸 Final Payable Net: \u20B9${finalPayableAmount.toFixed(2)} <span style="font-size:10px; color:#444;">(Raw: \u20B9${tx.amount})</span></div>
+                        <div style="font-size:11px; color:#888; font-family:monospace; word-break:break-all;">📌 Destination: ${tx.targetAddress}</div>
+                        
+                        <!-- ⚡ THE TWO MAGIC OPERATIVE BUTTONS INJECTED LIVE -->
+                        <div class="action-button-grid">
+                            <button class="btn-owner-success" onclick="processVaultSettlement('${tx.orderId}', 'successful')">Success \u2705</button>
+                            <button class="btn-owner-reject" onclick="processVaultSettlement('${tx.orderId}', 'rejected')">Reject \u274c</button>
+                        </div>
+                    </div>
+                `;
             });
-            const data = await res.json();
-            if(data.success) triggerMasterSyncLoop();
+            listContainer.innerHTML = html;
         }
 
-        async function broadcastAnnouncement() {
-            const text = document.getElementById('announcement-input').value.trim();
-            const statusEl = document.getElementById('announce-status');
-            if(!text) return;
-            const res = await fetch('/api/admin/update-announcement', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text })
-            });
-            const data = await res.json();
-            if(data.success) {
-                statusEl.style.color = "#00ffcc";
-                statusEl.innerText = "🎉 Announcement successfully synchronized!";
-                document.getElementById('announcement-input').value = "";
-            }
+        async function processVaultSettlement(orderId, actionType) {
+            try {
+                const res = await fetch('/api/owner/settle-withdraw', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: sessionMasterCode, pin: sessionMasterPin, orderId: orderId, action: actionType })
+                });
+                const data = await res.json();
+                if(data.success) {
+                    // अप्रूव या रिजेक्ट करते ही उसी सेकंड लाइव सिंक रिफ्रेश मारना
+                    await synchronizeOwnerMegaConsole();
+                }
+            } catch(e) {}
         }
 
-        async function executeForceAdjust(action) {
-            const username = document.getElementById('force-phone').value.trim();
-            const amount = document.getElementById('force-amount').value;
-            const statusEl = document.getElementById('force-status');
-            if(!username || !amount) return;
-            const res = await fetch('/api/admin/update-balance', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, amount, action, adminName: "Master Owner" })
-            });
-            const data = await res.json();
-            if(data.success) {
-                statusEl.style.color = "#00ffcc";
-                statusEl.innerText = `✅ Success: ${action.toUpperCase()} ₹${amount}`;
-                document.getElementById('force-phone').value = "";
-                document.getElementById('force-amount').value = "";
-                triggerMasterSyncLoop();
-            }
+        async function deploySupremeBroadcast() {
+            const str = document.getElementById('master-broadcast-input').value.trim();
+            const respEl = document.getElementById('master-broadcast-response');
+            if(!str) return;
+
+            try {
+                const res = await fetch('/api/admin/broadcast', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: str })
+                });
+                const data = await res.json();
+                if(data.success) {
+                    respEl.innerText = "\u2705 Supreme Broadcast deployed across all terminal layers!";
+                    document.getElementById('master-broadcast-input').value = "";
+                }
+            } catch(e) {}
         }
 
-        async function executeOwnerPasswordOverride() {
-            const username = document.getElementById('owner-reset-phone').value.trim();
-            const newPassword = document.getElementById('owner-reset-pass').value.trim();
-            const statusEl = document.getElementById('owner-reset-status');
-            if(!username || !newPassword) return;
-            const res = await fetch('/api/admin/reset-password', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, newPassword, adminName: "Master Owner Control" })
-            });
-            const data = await res.json();
-            if(data.success) {
-                statusEl.style.color = "#00ffcc";
-                statusEl.innerText = `✅ PIN changed successfully!`;
-                document.getElementById('owner-reset-phone').value = "";
-                document.getElementById('owner-reset-pass').value = "";
-            }
+        async function generateMasterGiftVoucher() {
+            const vName = document.getElementById('voucher-create-name').value.trim();
+            const vVal = parseFloat(document.getElementById('voucher-create-value').value);
+            const respEl = document.getElementById('master-voucher-response');
+            
+            if(!vName || isNaN(vVal)) return;
+
+            try {
+                const res = await fetch('/api/owner/create-voucher', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: sessionMasterCode, pin: sessionMasterPin, voucherCode: vName, amount: vVal })
+                });
+                const data = await res.json();
+                if(data.success) {
+                    respEl.innerText = `\u2705 Reusable Gift Voucher [ ${vName} ] successfully active!`;
+                    document.getElementById('voucher-create-name').value = "";
+                    document.getElementById('voucher-create-value').value = "";
+                }
+            } catch(e) {}
+        }
+
+        // 💀 THE ULTIMATE DEAD ADMIN KILL-SWITCH PROCESSOR ENGINE
+        async function executeDeadAdminKillSwitch() {
+            const targetAdmin = document.getElementById('target-kill-admin-username').value.trim();
+            const respEl = document.getElementById('kill-switch-response');
+            if(!targetAdmin) return;
+
+            try {
+                const res = await fetch('/api/owner/terminate-admin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: sessionMasterCode, pin: sessionMasterPin, adminUsername: targetAdmin })
+                });
+                const data = await res.json();
+                if(data.success) {
+                    respEl.innerText = `\u2620\ufe0f Success: Sub-Admin [ ${targetAdmin} ] terminated and locked forever!`;
+                    document.getElementById('target-kill-admin-username').value = "";
+                }
+            } catch(e) {}
         }
     </script>
 </body>
